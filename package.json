@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for project PMP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SWAT-PMP-Master/Backend.git"
+  },
+  "keywords": [
+    "Backend",
+    "PMP",
+    "Platzi",
+    "master"
+  ],
+  "author": "Carlos Gutierrez <ingecarlos.gutierrez@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SWAT-PMP-Master/Backend/issues"
+  },
+  "homepage": "https://github.com/SWAT-PMP-Master/Backend#readme"
+}
