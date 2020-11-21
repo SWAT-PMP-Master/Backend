@@ -4,6 +4,8 @@
   "description": "Backend for project PMP",
   "main": "index.js",
   "scripts": {
+    "start": "node pmp-backend/index.js",
+    "dev": "nodemon pmp-backend/index.js",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": "echo \"Error: no test specified\" && exit 0"
