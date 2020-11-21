@@ -4,8 +4,8 @@
   "description": "Backend for project PMP",
   "main": "index.js",
   "scripts": {
-    "start": "node pmp-backend/index.js",
-    "dev": "nodemon pmp-backend/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "setup": "node pmp-db/setup.js",
