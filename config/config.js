@@ -1,6 +1,6 @@
 'use strict'
 require('dotenv').config()
-const debug = require('debug')('Blood-Stream:db:setup')
+const debug = require('debug')('PMP')
 
 module.exports = function config (configExtra) {
   const config = {
