@@ -8,6 +8,7 @@
     "dev": "nodemon pmp-backend/index.js",
     "lint": "standard",
     "lint-fix": "standard --fix",
+    "setup": "node pmp-db/setup.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
