@@ -1,5 +1,5 @@
 const trelloCheck = async (trelloId, trelloSecret) => {
-  //const config = require('../config/config')
+  // const config = require('../config/config')
   const trelloNode = require('trello-node-api')(trelloId, trelloSecret)
 
   let response
@@ -13,6 +13,6 @@ const trelloCheck = async (trelloId, trelloSecret) => {
   }
 }
 
-//trelloCheck()
+// trelloCheck()
 
 module.exports = trelloCheck
