@@ -28,6 +28,5 @@ module.exports = function setupUsersModel (config) {
       allowNull: false
     }
 
-
   })
 }
