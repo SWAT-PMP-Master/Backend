@@ -24,7 +24,7 @@ module.exports = async function (config) {
   })
   const sequelize = setupDatabase(config)
 
-  const usersModel = setupUsersModel(config) 
+  const usersModel = setupUsersModel(config)
   const tableModel = setupTableModel(config)
 
   tableModel.belongsTo(usersModel)
