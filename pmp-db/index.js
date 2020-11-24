@@ -2,11 +2,13 @@
 
 const setupDatabase = require('./lib/db')
 
-const setupApiKeyModel = require('./models/apiKey')
+const setupUsersModel = require('./models/user')
+const setupTableModel = require('./models/table')
 
 const defaults = require('defaults')
 
-const setupApiKey = require('./lib/apiKey')
+const setupUsers = require('./lib/users')
+const setupTable = require('./lib/table')
 
 module.exports = async function (config) {
   config = defaults(config, {
@@ -22,7 +24,10 @@ module.exports = async function (config) {
   })
   const sequelize = setupDatabase(config)
 
-  const apiKeyModel = setupApiKeyModel(config)
+  const usersModel = setupUsersModel(config) 
+  const tableModel = setupTableModel(config)
+
+  tableModel.belongsTo(usersModel)
 
   await sequelize.authenticate()
 
@@ -31,9 +36,11 @@ module.exports = async function (config) {
     await sequelize.sync({ force: true })
   }
 
-  const ApiKey = setupApiKey(apiKeyModel)
+  const users = setupUsers(usersModel)
+  const table = setupTable(tableModel)
 
   return {
-    ApiKey
+    users,
+    table
   }
 }

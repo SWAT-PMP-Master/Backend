@@ -1,5 +1,5 @@
 'use strict'
-require('dotenv').config()
+const dotenv = require('dotenv').config()
 const debug = require('debug')('PMP:db:setup')
 
 module.exports = function config (configExtra) {
