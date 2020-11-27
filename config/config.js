@@ -9,8 +9,10 @@ module.exports = function config (configExtra) {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     host: process.env.DB_HOST,
+    port: process.env.PORT || 3000,
     trelloId: process.env.TRELLO_ID,
     trelloSecret: process.env.TRELLO_SECRET,
+    secret: process.env.SECRET,
     dialect: 'postgres',
     logging: s => debug(s)
   }

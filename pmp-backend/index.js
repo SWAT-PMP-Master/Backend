@@ -1,18 +1,43 @@
-const trelloCheck = async (trelloId, trelloSecret) => {
-  // const config = require('../config/config')
-  const trelloNode = require('trello-node-api')(trelloId, trelloSecret)
+'use strict'
 
-  let response
-  try {
-    response = await trelloNode.board.search('5fb6924ce122620591ab0071')
-    console.log(response)
-  } catch (error) {
-    if (error) {
-      console.log('error ', error)
-    }
+const index = () => {
+  const express = require('express')
+  const bodyParser = require('body-parser')
+  const cors = require('cors')
+  const config = require('../config/config')
+  const routes = require('./routes/routes')
+  const app = express()
+  const helmet = require('helmet')
+
+  const session = require('express-session')
+  const cookieParser = require('cookie-parser')
+
+  app.use(cors())
+  app.use(bodyParser.json())
+  app.use(helmet())
+  app.use(cookieParser())
+  app.use(
+    session({
+      resave: false,
+      saveUninitialized: true,
+      secret: config(false).secret
+    })
+  )
+
+  const mainPage = async (req, res, next) => {
+    res.send('Working')
   }
+
+  app.get('/', mainPage)
+
+  // ROUTER
+  routes(app).loginRoute()
+  routes(app).postmanRoute()
+  routes(app).errorsRoute()
+
+  app.listen(config(false).port, () => {
+    console.log(`Api escuchando en el puerto ${config(false).port}`)
+  })
 }
 
-// trelloCheck()
-
-module.exports = trelloCheck
+module.exports = index
