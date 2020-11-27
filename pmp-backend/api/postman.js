@@ -11,4 +11,3 @@ const get = (req, res, next) => {
 router.get('/', get)
 
 module.exports = router
-
