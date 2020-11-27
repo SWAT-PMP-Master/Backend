@@ -17,7 +17,13 @@ module.exports = (store) => {
     }
   }
 
+  const login = (body) => {
+    console.log(body)
+    return body
+  }
+
   return {
-    upsert
+    upsert,
+    login
   }
 }

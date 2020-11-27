@@ -23,7 +23,13 @@ const index = () => {
       secret: config(false).secret
     })
   )
+  
+  const mainPage = async (req, res, next) => {
+    res.send('Working')
+  }
 
+  app.get('/', mainPage)
+  
   // ROUTER
   routes(app).loginRoute()
   routes(app).postmanRoute()
