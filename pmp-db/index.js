@@ -1,14 +1,16 @@
-'use strict'
+'../../config/configuse strict'
 
 const setupDatabase = require('./lib/db')
 
 const setupUsersModel = require('./models/user')
 const setupTableModel = require('./models/table')
+const setupApiKeyModel = require('./models/apikey')
 
 const defaults = require('defaults')
 
 const setupUsers = require('./lib/users')
 const setupTable = require('./lib/table')
+const setupApiKey = require('./lib/apikey')
 
 module.exports = async function (config) {
   config = defaults(config, {
@@ -26,6 +28,7 @@ module.exports = async function (config) {
 
   const usersModel = setupUsersModel(config)
   const tableModel = setupTableModel(config)
+  const apiKeyModel = setupApiKeyModel(config)
 
   tableModel.belongsTo(usersModel)
 
@@ -38,9 +41,11 @@ module.exports = async function (config) {
 
   const users = setupUsers(usersModel)
   const table = setupTable(tableModel)
+  const apiKey = setupApiKey(apiKeyModel)
 
   return {
     users,
-    table
+    table,
+    apiKey
   }
 }

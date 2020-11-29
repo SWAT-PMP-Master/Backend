@@ -12,6 +12,8 @@ const index = () => {
   const session = require('express-session')
   const cookieParser = require('cookie-parser')
 
+  const port = process.env.PORT || 3000
+
   app.use(cors())
   app.use(bodyParser.json())
   app.use(helmet())
@@ -35,8 +37,8 @@ const index = () => {
   routes(app).postmanRoute()
   routes(app).errorsRoute()
 
-  app.listen(config(false).port, () => {
-    console.log(`Api escuchando en el puerto ${config(false).port}`)
+  app.listen(port, () => {
+    console.log(`Api escuchando en el puerto ${port}`)
   })
 }
 
