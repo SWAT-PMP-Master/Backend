@@ -9,6 +9,8 @@ const index = () => {
   const app = express()
   const helmet = require('helmet')
 
+  const trelloAuth = require('./utils/auth/trello/index')
+
   const session = require('express-session')
   const cookieParser = require('cookie-parser')
 
@@ -32,10 +34,20 @@ const index = () => {
 
   app.get('/', mainPage)
 
+  const query = {
+    appKey: config(false).trelloId,
+    appSecret: config(false).trelloSecret,
+    callbackUrl: config(false).apiUrl
+  }
+
+  console.log(trelloAuth(query).getUserInfo)
+  app.get('/api/auth/test', trelloAuth(query).getUserInfo)
+
   // ROUTER
   routes(app).loginRoute()
   routes(app).postmanRoute()
   routes(app).errorsRoute()
+  routes(app).trelloRoute()
 
   app.listen(port, () => {
     console.log(`Api escuchando en el puerto ${port}`)

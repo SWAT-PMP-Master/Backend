@@ -11,7 +11,7 @@
 const chalk = require('chalk')
 const debug = require('debug')('app:scripts:api-keys')
 const utils = require('../utils/index')
-const crypto = require('crypto')
+// const crypto = require('crypto')
 
 const db = require('../index')
 const config = require('../../config/config')
@@ -57,10 +57,10 @@ const apiKeys = [
   }
 ]
 
-function generateRandomToken () {
+/* function generateRandomToken () {
   const buffer = crypto.randomBytes(32)
   return buffer.toString('hex')
-}
+} */
 
 const seedApiKey = async () => {
   try {
