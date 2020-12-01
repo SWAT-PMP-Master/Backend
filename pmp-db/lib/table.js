@@ -34,6 +34,14 @@ module.exports = function setupTable (tableModel) {
     })
   }
 
+  async function findByUser (userId) {
+    return await tableModel.findOne({
+      where: {
+        userId
+      }
+    })
+  }
+
   async function findAll () {
     return await tableModel.findAll()
   }
@@ -50,6 +58,7 @@ module.exports = function setupTable (tableModel) {
     createOrUpdate,
     findById,
     findByUuid,
+    findByUser,
     findAll,
     deleteById
   }

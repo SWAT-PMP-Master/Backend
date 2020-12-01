@@ -7,7 +7,6 @@ module.exports = function setupUsers (usersModel) {
         uuid: users.uuid
       }
     }
-
     const existingusers = await usersModel.findOne(cond)
     if (existingusers) {
       const updated = await usersModel.update(users, cond)
