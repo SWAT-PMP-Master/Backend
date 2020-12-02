@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt')
-const utils = require('../../../../pmp-db/utils/index')
 const config = require('../../../../config/config')
 const passport = require('passport')
 const { BasicStrategy } = require('passport-http')
@@ -7,11 +6,19 @@ const boom = require('@hapi/boom')
 const store = require('../../../../pmp-db/index')
 
 passport.use(new BasicStrategy(async (username, password, cb) => {
-  const { table, users } = await store(config(false)).catch(utils.handleFatalError)
-  const usersExists = await users.findByNickname(username).catch(utils.handleFatalError)
-  const tableExist = await table.findByUser(usersExists.id).catch(utils.handleFatalError)
-
   try {
+    const { table, users } = await store(config(false))
+    let usersExists
+
+    const emailExists = await users.findByEmail(username)
+    if (!emailExists) {
+      usersExists = await users.findByNickname(username)
+    } else {
+      usersExists = emailExists
+    }
+
+    const tableExist = await table.findByUser(usersExists.id)
+
     if (!usersExists) {
       return cb(boom.unauthorized(), false)
     }
