@@ -11,6 +11,7 @@ module.exports = function config (configExtra) {
     host: process.env.DB_HOST,
     trelloId: process.env.TRELLO_ID,
     trelloSecret: process.env.TRELLO_SECRET,
+    trelloTokenSecret: process.env.TRELLO_TOKEN_SECRET,
     trelloToken: process.env.TRELLO_TOKEN,
     secret: process.env.SECRET,
     adminScopes: process.env.adminScopes,

@@ -14,18 +14,18 @@ class Queries {
         function (error, data, response) {
           if (!error) {
             resolve(data)
-          } /* else {
-            reject({ error: err })
-          } */
+          } else {
+            reject(error)
+          }
         }
       )
-      reject(new Error('error'))
     })
     return userInfoPromise
   };
 
   getUserTrelloBoards (tokenInfo) {
     const self = this
+    console.log(tokenInfo)
     const userBoardsPromise = new Promise(function (resolve, reject) {
       self.oauth.get(
         `${self.uri}/1/members/me/boards`,
@@ -34,12 +34,11 @@ class Queries {
         function (err, data, response) {
           if (!err) {
             resolve(data)
-          } /* else {
-            reject({ error: err })
-          } */
+          } else {
+            reject(err)
+          }
         }
       )
-      reject(new Error('error'))
     })
 
     return userBoardsPromise
@@ -50,17 +49,17 @@ class Queries {
     const boardlistsPromise = new Promise(function (resolve, reject) {
       self.oauth.get(
         `${self.uri}/1/boards/${boardIdAndTokenInfo.boardId}/lists`,
-        boardIdAndTokenInfo.tokenInfo.accToken,
-        boardIdAndTokenInfo.tokenInfo.accTokenSecrete,
+        boardIdAndTokenInfo.accToken,
+        boardIdAndTokenInfo.accTokenSecrete,
         function (err, data, response) {
+          console.log(data)
           if (!err) {
             resolve(data)
-          } /* else {
-            reject({ error: err })
-          } */
+          } else {
+            reject(err)
+          }
         }
       )
-      reject(new Error('error'))
     })
 
     return boardlistsPromise
@@ -71,17 +70,16 @@ class Queries {
     const cardsOnListPromise = new Promise(function (resolve, reject) {
       self.oauth.get(
         `${self.uri}/1/lists/${boardListAndTokenInfo.listId}/cards`,
-        boardListAndTokenInfo.tokenInfo.accToken,
-        boardListAndTokenInfo.tokenInfo.accTokenSecrete,
+        boardListAndTokenInfo.accToken,
+        boardListAndTokenInfo.accTokenSecrete,
         function (err, data, response) {
           if (!err) {
             resolve(data)
-          } /* else {
-            reject({ error: err })
-          } */
+          } else {
+            reject(err)
+          }
         }
       )
-      reject(new Error('error'))
     })
     return cardsOnListPromise
   };

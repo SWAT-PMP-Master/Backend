@@ -1,6 +1,6 @@
 const { OAuth } = require('oauth')
 
-class OAuth_Ext {
+class oAuthExt {
   constructor (options) {
     this.appkey = options.appKey
     this.appSecret = options.appSecret
@@ -24,4 +24,4 @@ class OAuth_Ext {
   }
 }
 
-module.exports.OAuth_Ext = OAuth_Ext
+module.exports.OAuth_Ext = oAuthExt

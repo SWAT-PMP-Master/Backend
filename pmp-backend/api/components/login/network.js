@@ -70,4 +70,3 @@ router.post('/sign-in/:apiKeyToken', postSignIn)
 router.post('/', upsert)
 
 module.exports = router
-

@@ -33,6 +33,14 @@ module.exports = function setupUsers (usersModel) {
     })
   }
 
+  async function findByEmail (email) {
+    return await usersModel.findOne({
+      where: {
+        email
+      }
+    })
+  }
+
   async function findByUuid (uuid) {
     return await usersModel.findOne({
       where: {
@@ -83,6 +91,7 @@ module.exports = function setupUsers (usersModel) {
     findByNickname,
     findAll,
     emailExists,
+    findByEmail,
     deleteById,
     userExists
   }
