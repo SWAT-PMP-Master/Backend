@@ -28,7 +28,6 @@ npm run start
 - [JavaScript](https://www.javascript.com/) - Programming Language
 - [NodeJs](https://nodejs.org/en/) - Web Framework
 - [NPM](https://www.npmjs.com/) - Dependency manager
-- [Docker](https://www.docker.com) - Docker is the de facto standard to build and share containerized apps - from desktop, to the cloud. 
 - [Heroku](https://www.heroku.com/#) - Platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud
 
 
