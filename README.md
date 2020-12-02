@@ -1,6 +1,7 @@
 # PMP-Master || Team SWAT
 
-_This repository is used as a service through Docker and was implemented with Heroku, the function is to log in and register with Trello api. Depends of [Backend](https://github.com/SWAT-PMP-Master/Backend) (main repository)_
+This repository is used as a service through [Travis](https://travis-ci.org/) and was implemented with [Heroku](https://www.heroku.com/), the function is to log in, registe and get boardas informatin with [Trello api using oauth 1.0](https://oauth.net/core/1.0/). 
+
 
 ## Installation and initialization 🔧
 
