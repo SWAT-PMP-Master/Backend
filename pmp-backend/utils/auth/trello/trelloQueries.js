@@ -25,14 +25,12 @@ class Queries {
 
   getUserTrelloBoards (tokenInfo) {
     const self = this
-    console.log(tokenInfo)
     const userBoardsPromise = new Promise(function (resolve, reject) {
       self.oauth.get(
         `${self.uri}/1/members/me/boards`,
         tokenInfo.accToken,
         tokenInfo.accTokenSecrete,
         function (err, data, response) {
-          console.log(data)
           if (!err) {
             resolve(data)
           } else {
@@ -53,7 +51,6 @@ class Queries {
         boardIdAndTokenInfo.accToken,
         boardIdAndTokenInfo.accTokenSecrete,
         function (err, data, response) {
-          console.log(data)
           if (!err) {
             resolve(data)
           } else {
