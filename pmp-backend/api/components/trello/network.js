@@ -20,9 +20,7 @@ const infoUser = async (req, res) => {
       accessToken: req.params.token,
       accessTokenSecrete: config(false).trelloSecret
     }
-    console.log(tokenKeyPair)
     const data = JSON.parse(await trelloAuth(query).getUserInfo(tokenKeyPair))
-
     const user = {
       nickname: data.username,
       email: data.email,
@@ -31,14 +29,15 @@ const infoUser = async (req, res) => {
       trelloIdUser: tokenKeyPair.accessTokenSecrete,
       token: tokenKeyPair.accessToken
     }
-
     if (user.email === null) user.email = `${data.username}@trello.com`
-    const userSaved = await controller.upsert(user)
 
+    const userSaved = await controller.upsert(user)
+    
     userSaved.data = data
 
     response.success(req, res, userSaved, 200)
   } catch (err) {
+    console.log(err.data)
     response.error(req, res, err.data, err.statusCode)
   }
 }

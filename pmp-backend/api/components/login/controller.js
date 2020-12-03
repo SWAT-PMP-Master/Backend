@@ -7,6 +7,7 @@ const config = require('../../../../config/config')
 module.exports = (store) => {
   const upsert = async (data) => {
     try {
+      console.log(data)
       const { users, table } = await store(config(false))
       const userExist = await users.findByNickname(data.nickname)
       const newUser = {
@@ -30,8 +31,7 @@ module.exports = (store) => {
       newUser.password = await bcrypt.hash(data.password, 5)
       newUser.rol = data.rol || 'developer'
       tableSet.trelloIdUser = config(false).trelloId
-      tableSet.trelloSecretUser = config(false).trelloToken
-
+      tableSet.trelloSecretUser = config(false).trelloSecret
       const userSaved = await users.createOrUpdate(newUser)
 
       tableSet.userId = userSaved.id
@@ -50,7 +50,8 @@ module.exports = (store) => {
       // userSaved.token = tableSaved.trelloSecretUser
       return userSaved
     } catch (error) {
-      throw new Error('Something was wrong')
+      console.error(error)
+      throw new Error(error)
     }
   }
 
