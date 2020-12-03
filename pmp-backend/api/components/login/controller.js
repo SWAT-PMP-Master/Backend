@@ -8,7 +8,6 @@ const boom = require('@hapi/boom')
 const jwt = require('jsonwebtoken')
 
 module.exports = (store) => {
-  
   const upsert = async (data) => {
     try {
       const { users, table } = await store(config(false))
@@ -89,13 +88,13 @@ module.exports = (store) => {
 
   const login = async (req) => {
     const userInfo = await infoUser(req.token)
-    const apiKeyToken = config(false).apiKeyToken 
-    if (!apiKeyToken) next(boom.unauthorized('apiKeyToken is required'))
+    const apiKeyToken = config(false).apiKeyToken
+    if (!apiKeyToken) throw new Error(boom.unauthorized('apiKeyToken is required'))
     try {
-      if (!userInfo) next(boom.unauthorized(error))
+      if (!userInfo) throw new Error(boom.unauthorized())
       const { apiKey } = await store(config(false))
       const ApiKey = await apiKey.findByToken(apiKeyToken)
-      if (!ApiKey) next(boom.unauthorized())
+      if (!ApiKey) throw new Error(boom.unauthorized())
 
       const Nickname = userInfo.Nickname
       const uuid = userInfo.uuid

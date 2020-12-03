@@ -7,7 +7,7 @@ const controller = require('./index')
 const router = express.Router()
 
 const postSignIn = async (req, res, next) => {
-  controller.login(req.params) 
+  controller.login(req.params)
     .then((user) => {
       response.success(req, res, user, 201)
     })
