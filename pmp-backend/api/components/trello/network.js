@@ -32,7 +32,7 @@ const infoUser = async (req, res) => {
     if (user.email === null) user.email = `${data.username}@trello.com`
 
     const userSaved = await controller.upsert(user)
-    
+
     userSaved.data = data
 
     response.success(req, res, userSaved, 200)
