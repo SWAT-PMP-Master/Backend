@@ -8,6 +8,7 @@ node_js:
 git:
   depth: 3
 script:
+- yarn setup
 - yarn test
 - yarn lint
 notifications:
