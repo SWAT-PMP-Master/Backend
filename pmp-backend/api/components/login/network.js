@@ -25,7 +25,7 @@ const postSignIn = async (req, res, next) => {
         const { apiKey } = await store(config(false)).catch(utils.handleFatalError)
 
         if (error) next(error)
-        const ApiKey = await apiKey.findByToken(apiKeyToken.apiKeyToken).catch(utils.handleFatalError)
+        const ApiKey = await apiKey.findByToken(apiKeyToken.apiKeyToken)
         if (!ApiKey) next(boom.unauthorized())
         const { Nickname } = user
         const uuid = user.uuid

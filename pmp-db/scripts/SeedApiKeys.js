@@ -11,7 +11,7 @@
 const chalk = require('chalk')
 const debug = require('debug')('app:scripts:api-keys')
 const utils = require('../utils/index')
-// const crypto = require('crypto')
+const crypto = require('crypto')
 
 const db = require('../index')
 const config = require('../../config/config')
@@ -40,27 +40,27 @@ const publicScopes = [
   'update: user',
   'delete: user'
 ]
-
+// config(false).adminScopes
 // token: generateRandomToken(),
 const apiKeys = [
   {
-    token: config(false).adminScopes,
+    token: generateRandomToken(),
     scopes: adminScopes
   },
   {
-    token: config(false).publicScopes,
+    token: generateRandomToken(),
     scopes: publicScopes
   },
   {
-    token: config(false).masterScopes,
+    token: generateRandomToken(),
     scopes: masterScopes
   }
 ]
 
-/* function generateRandomToken () {
+ function generateRandomToken () {
   const buffer = crypto.randomBytes(32)
   return buffer.toString('hex')
-} */
+}
 
 const seedApiKey = async () => {
   try {
