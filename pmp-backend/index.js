@@ -36,6 +36,7 @@ const index = () => {
   routes(app).loginRoute()
   routes(app).postmanRoute()
   routes(app).errorsRoute()
+  routes(app).trelloRoute()
 
   app.listen(port, () => {
     console.log(`Api escuchando en el puerto ${port}`)

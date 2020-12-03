@@ -1,6 +1,6 @@
 class Queries {
   constructor (oauth) {
-    this.uri = 'https://api.trello.com'
+    this.uri = 'https://trello.com'
     this.oauth = oauth
   }
 
@@ -32,6 +32,7 @@ class Queries {
         tokenInfo.accToken,
         tokenInfo.accTokenSecrete,
         function (err, data, response) {
+          console.log(data)
           if (!err) {
             resolve(data)
           } else {
@@ -61,7 +62,6 @@ class Queries {
         }
       )
     })
-
     return boardlistsPromise
   };
 
