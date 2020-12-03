@@ -33,7 +33,6 @@ module.exports = (store) => {
       newUser.password = await bcrypt.hash(data.password, 5)
       newUser.rol = data.rol || 'developer'
       tableSet.trelloIdUser = config(false).trelloId
-      tableSet.trelloSecretUser = config(false).trelloSecret
       const userSaved = await users.createOrUpdate(newUser)
 
       tableSet.userId = userSaved.id
@@ -74,12 +73,13 @@ module.exports = (store) => {
         email: data.email,
         password: data.id,
         rol: data.memberType,
-        trelloIdUser: tokenKeyPair.accessTokenSecrete,
+        trelloIdUser: info,
         token: tokenKeyPair.accessToken
       }
       if (user.email === null) user.email = `${data.username}@trello.com`
       const userSaved = await upsert(user)
       userSaved.data = data
+
       return userSaved
     } catch (err) {
       throw new Error(err)

@@ -14,34 +14,22 @@ passport.use(
   },
   async (tokenPayload, cb) => {
     try {
-      const { Users, Platform, Contact } = await store(config(false))
-      const user = await Users.findByNickname(tokenPayload.Nickname)
-      const platform = await Platform.findById(user.platformId)
-      const contact = await Contact.findById(user.contactId)
-      const accessRol = await Contact.findById(user.accessRolId)
+      const { users, table } = await store(config(false))
+      const user = await users.findByNickname(tokenPayload.Nickname)
+      const token = await table.findByUser(user.id)
 
-      if (!user) return cb(boom.unauthorized(), false)
-
-      delete user.passwordId
-      delete user.id
+      if (!token) return cb(boom.unauthorized(), false)
+      delete user.createdAt
       delete user.updatedAt
+      delete user.id
+      delete user.password
+      delete token.userId
+      delete token.id
+      delete token.updatedAt
+      delete token.createdAt
 
-      delete contact.id
-      delete contact.createdAt
-      delete contact.updatedAt
-
-      delete platform.id
-      delete platform.createdAt
-      delete platform.updatedAt
-
-      delete accessRol.id
-      delete accessRol.createdAt
-      delete accessRol.updatedAt
-
-      user.contactId = contact
-      user.platformId = platform
-      user.accessRolId = accessRol
-
+      user.token = token
+      user.data = tokenPayload.data
       cb(null, { ...user, scopes: tokenPayload.scopes })
     } catch (error) {
       return cb(error)
