@@ -76,7 +76,7 @@ module.exports = (store) => {
         trelloIdUser: info,
         token: tokenKeyPair.accessToken
       }
-      if (user.email === null) user.email = `${data.username}@trello.com`
+      if (!user.email) user.email = `${data.username}@trello.com`
       const userSaved = await upsert(user)
       userSaved.data = data
 
