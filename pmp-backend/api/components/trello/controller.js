@@ -20,6 +20,7 @@ module.exports = (store) => {
       }
 
       const data = JSON.parse(await trelloAuth(query).getUserTrelloBoards(tokenKeyPair))
+      console.log(data)
       return data
     } catch (err) {
       console.error(err)

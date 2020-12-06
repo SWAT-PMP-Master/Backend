@@ -11,16 +11,17 @@ require('../../../utils/auth/strategies/jwt')
 
 const boardsInfo = async (req, res, next) => {
   try {
-    const user = controller.boardsInfo(req.user)
+    const user = await controller.boardsInfo(req.user)
+    console.log(user)
     response.success(req, res, user, 200)
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 
 const boardsList = async (req, res, next) => {
   try {
-    const user = controller.boardsList(req.user)
+    const user = await controller.boardsList(req.user)
     response.success(req, res, user, 200)
   } catch (err) {
     console.error(err)
@@ -29,7 +30,7 @@ const boardsList = async (req, res, next) => {
 
 const cardList = async (req, res, next) => {
   try {
-    const user = controller.cardList(req.user, req.params.idCard)
+    const user = await controller.cardList(req.user, req.params.idCard)
     response.success(req, res, user, 200)
   } catch (err) {
     console.error(err)
