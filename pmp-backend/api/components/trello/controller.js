@@ -22,20 +22,36 @@ module.exports = (store) => {
       const data = JSON.parse(await trelloAuth(query).getUserTrelloBoards(tokenKeyPair))
       return data
     } catch (err) {
-      console.error(err)
+      throw new Error(err)
     }
   }
 
   const boardsList = async (body) => {
     try {
-      const tokenKeyPair = {
-        accToken: body.token.trelloSecretUser,
-        accTokenSecrete: config(false).trelloSecret,
-        boardId: body.data.idBoards
+      const boardsTotal = body.data
+      let elements = []
+      for (let i = 0; i < boardsTotal.length; i++) {
+        const tokenKeyPair = {
+          accToken: body.token.trelloSecretUser,
+          accTokenSecrete: config(false).trelloSecret,
+          boardId: boardsTotal[i]
+        }
+        const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
+        for (let j = 0; j < data.length; j++) {
+          const tokenKeyPairCard = {
+            accToken: body.token.trelloSecretUser,
+            accTokenSecrete: config(false).trelloSecret,
+            listId: data[j].id
+          }
+          const dataCard = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPairCard))
+
+          data[j].list = dataCard
+        }
+
+        elements = elements.concat([data])
       }
 
-      const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
-      return data
+      return elements
     } catch (err) {
       console.error(err)
     }
