@@ -12,7 +12,6 @@ require('../../../utils/auth/strategies/jwt')
 const boardsInfo = async (req, res, next) => {
   try {
     const user = await controller.boardsInfo(req.user)
-    console.log(user)
     response.success(req, res, user, 200)
   } catch (err) {
     console.log(err)

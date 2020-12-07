@@ -96,30 +96,29 @@ module.exports = (store) => {
       const ApiKey = await apiKey.findByToken(apiKeyToken)
       if (!ApiKey) throw new Error(boom.unauthorized())
 
-      const Nickname = userInfo.Nickname
-      const uuid = userInfo.uuid
-      const email = userInfo.email
-      const tokenUser = req.token
-      const rol = userInfo.rol
+      const { data, ...userNewInfo } = userInfo
+      const { id, idBoards } = data
+
       const payload = {
-        uuid,
-        Nickname,
-        email,
-        tokenUser,
-        rol,
+        id,
+        uuid: userNewInfo.uuid,
+        Nickname: userNewInfo.Nickname,
+        email: userNewInfo.email,
+        tokenUser: req.token,
+        rol: userNewInfo.rol,
         scopes: ApiKey.scopes,
-        data: userInfo.data
+        boards: idBoards
       }
       const token = jwt.sign(payload, config(false).authJwtSecret, {
         expiresIn: '12h'
       })
-      delete userInfo.data.id
-      const data = {
-        user: userInfo,
+
+      const userInfoReturn = {
+        user: userNewInfo,
         token: token
       }
 
-      return data
+      return userInfoReturn
     } catch (err) {
       throw new Error(err)
     }

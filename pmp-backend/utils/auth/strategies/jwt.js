@@ -19,18 +19,16 @@ passport.use(
       const token = await table.findByUser(user.id)
 
       if (!token) return cb(boom.unauthorized(), false)
-      delete user.createdAt
-      delete user.updatedAt
-      delete user.id
-      delete user.password
-      delete token.userId
-      delete token.id
-      delete token.updatedAt
-      delete token.createdAt
+      const { createdAt, updatedAt, id, password, ...infoUser } = user
+      const { trelloIdUser, trelloSecretUser } = token
+      const tok = {
+        trelloIdUser: trelloIdUser,
+        trelloSecretUser: trelloSecretUser
+      }
+      infoUser.token = tok
+      infoUser.data = tokenPayload.boards
 
-      user.token = token
-      user.data = tokenPayload.data
-      cb(null, { ...user, scopes: tokenPayload.scopes })
+      cb(null, { ...infoUser, scopes: tokenPayload.scopes })
     } catch (error) {
       return cb(error)
     }
