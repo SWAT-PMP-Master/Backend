@@ -51,7 +51,6 @@ module.exports = (store) => {
       // userSaved.token = tableSaved.trelloSecretUser
       return userSaved
     } catch (error) {
-      console.error(error)
       throw new Error(error)
     }
   }

@@ -4,14 +4,14 @@ class Queries {
     this.oauth = oauth
   }
 
-  getUserInfo (tokenkeyPair) {
+  async getUserInfo (tokenkeyPair) {
     const self = this
-    const userInfoPromise = new Promise(function (resolve, reject) {
+    const userInfoPromise = new Promise((resolve, reject) => {
       self.oauth.get(
         `${self.uri}/1/members/me`,
         tokenkeyPair.accessToken,
         tokenkeyPair.accessTokenSecrete,
-        function (error, data, response) {
+        (error, data, response) => {
           if (!error) {
             resolve(data)
           } else {
@@ -25,12 +25,12 @@ class Queries {
 
   getUserTrelloBoards (tokenInfo) {
     const self = this
-    const userBoardsPromise = new Promise(function (resolve, reject) {
+    const userBoardsPromise = new Promise((resolve, reject) => {
       self.oauth.get(
         `${self.uri}/1/members/me/boards`,
         tokenInfo.accToken,
         tokenInfo.accTokenSecrete,
-        function (err, data, response) {
+        (err, data, response) => {
           if (!err) {
             resolve(data)
           } else {
@@ -45,12 +45,12 @@ class Queries {
 
   getBoardLists (boardIdAndTokenInfo) {
     const self = this
-    const boardlistsPromise = new Promise(function (resolve, reject) {
+    const boardlistsPromise = new Promise((resolve, reject) => {
       self.oauth.get(
         `${self.uri}/1/boards/${boardIdAndTokenInfo.boardId}/lists`,
         boardIdAndTokenInfo.accToken,
         boardIdAndTokenInfo.accTokenSecrete,
-        function (err, data, response) {
+        (err, data, response) => {
           if (!err) {
             resolve(data)
           } else {
@@ -64,12 +64,12 @@ class Queries {
 
   getCardsOnList (boardListAndTokenInfo) {
     const self = this
-    const cardsOnListPromise = new Promise(function (resolve, reject) {
+    const cardsOnListPromise = new Promise((resolve, reject) => {
       self.oauth.get(
         `${self.uri}/1/lists/${boardListAndTokenInfo.listId}/cards`,
         boardListAndTokenInfo.accToken,
         boardListAndTokenInfo.accTokenSecrete,
-        function (err, data, response) {
+        (err, data, response) => {
           if (!err) {
             resolve(data)
           } else {
