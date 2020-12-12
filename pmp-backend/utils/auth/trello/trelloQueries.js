@@ -42,6 +42,25 @@ class Queries {
     return userInfoPromise
   };
 
+  getMemberShipBoards (tokenInfo) {
+    const self = this
+    const userBoardsPromise = new Promise((resolve, reject) => {
+      self.oauth.get(
+        `${self.uri}/1/boards/${tokenInfo.id}/memberships`,
+        tokenInfo.accToken,
+        tokenInfo.accTokenSecrete,
+        (err, data, response) => {
+          if (!err) {
+            resolve(data)
+          } else {
+            reject(err)
+          }
+        }
+      )
+    })
+    return userBoardsPromise
+  }
+
   getUserTrelloBoards (tokenInfo) {
     const self = this
     const userBoardsPromise = new Promise((resolve, reject) => {
