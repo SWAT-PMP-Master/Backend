@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const idUserInfo = async (req, res, next) => {
     try {
-    const userInfo = controller.idUserInfo(req.idUserInfo, req.idUserGet)
+      const userInfo = await controller.idUserInfo(req.user, req.params)
     response.success(req, res, userInfo, 200)
   } catch (err) {
     console.log(err)

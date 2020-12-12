@@ -9,8 +9,8 @@ class Queries {
     const userInfoPromise = new Promise((resolve, reject) => {
       self.oauth.get(
         `${self.uri}/1/members/me`,
-        tokenkeyPair.accessToken,
-        tokenkeyPair.accessTokenSecrete,
+        tokenkeyPair.accToken,
+        tokenkeyPair.accTokenSecrete,
         (error, data, response) => {
           if (!error) {
             resolve(data)

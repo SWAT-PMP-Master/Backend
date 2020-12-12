@@ -6,6 +6,7 @@ const config = require('../../../../config/config')
 const trelloAuth = require('../../../utils/auth/trello/index')
 const boom = require('@hapi/boom')
 const jwt = require('jsonwebtoken')
+const utils = require('../../../utils/utils')
 
 module.exports = (store) => {
   const upsert = async (data) => {
@@ -57,15 +58,9 @@ module.exports = (store) => {
 
   const infoUser = async (info) => {
     try {
-      const query = {
-        appKey: config(false).trelloId,
-        appSecret: config(false).trelloSecret,
-        callbackUrl: config(false).apiUrl
-      }
-      const tokenKeyPair = {
-        accessToken: info,
-        accessTokenSecrete: config(false).trelloSecret
-      }
+      const query = utils().queryFn()
+      const tokenKeyPair = utils().tokenKeyPairFn(info)
+
       const data = JSON.parse(await trelloAuth(query).getUserInfo(tokenKeyPair))
       const user = {
         nickname: data.username,
