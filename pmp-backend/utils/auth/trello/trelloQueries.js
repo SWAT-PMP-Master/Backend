@@ -4,6 +4,25 @@ class Queries {
     this.oauth = oauth
   }
 
+  async getUsers (tokenkeyPair) {
+    const self = this
+    const userInfoPromise = new Promise((resolve, reject) => {
+      self.oauth.get(
+        `${self.uri}/1/members/${tokenkeyPair.id}`,
+        tokenkeyPair.accToken,
+        tokenkeyPair.accTokenSecrete,
+        (error, data, response) => {
+          if (!error) {
+            resolve(data)
+          } else {
+            reject(error)
+          }
+        }
+      )
+    })
+    return userInfoPromise
+  }
+
   async getUserInfo (tokenkeyPair) {
     const self = this
     const userInfoPromise = new Promise((resolve, reject) => {
