@@ -26,8 +26,30 @@ const boards = async (req, res, next) => {
     response.error(req, res, err.data, err.statusCode)
   }
 }
+
+const boardsField = async (req, res, next) => {
+  try {
+    const board = await controller.getABoardField(req.user, req.params)
+    response.success(req, res, board, 200)
+  } catch (err) {
+    response.error(req, res, err.data, err.statusCode)
+  }
+}
+
+const boardsAction = async (req, res, next) => {
+  try {
+    const board = await controller.getABoardAction(req.user, req.params)
+    response.success(req, res, board, 200)
+  } catch (err) {
+    response.error(req, res, err.data, err.statusCode)
+  }
+}
+
+
 // passport.authenticate('jwt', { session: false }),
-router.get('/boards/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
+router.get('/boardsMemberShip/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
 router.get('/boards/:board', passport.authenticate('jwt', { session: false }), boards)
+router.get('/boardsAndField/:board&:field', passport.authenticate('jwt', { session: false }), boardsField)
+router.get('/boardsAction/:board', passport.authenticate('jwt', { session: false }), boardsAction)
 
 module.exports = router
