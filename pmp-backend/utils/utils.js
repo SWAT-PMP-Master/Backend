@@ -3,16 +3,15 @@
 const config = require('../../config/config')
 
 module.exports = () => {
-
   const queryFn = () => {
     const query = {
       appKey: config(false).trelloId,
       appSecret: config(false).trelloSecret,
       callbackUrl: config(false).apiUrl
     }
-    return query 
+    return query
   }
-  
+
   const tokenKeyPairFn = (info) => {
     const tokenKeyPair = {
       accToken: info,
@@ -20,7 +19,7 @@ module.exports = () => {
     }
     return tokenKeyPair
   }
-  
+
   const tokenKeyPairCardFn = (info, id) => {
     const tokenKeyCard = {
       accToken: info,

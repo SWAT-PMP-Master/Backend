@@ -10,8 +10,8 @@ const router = express.Router()
 require('../../../utils/auth/strategies/jwt')
 
 const idUserInfoById = async (req, res, next) => {
-    try {
-      const userInfo = await controller.idUserInfoById(req.user, req.params)
+  try {
+    const userInfo = await controller.idUserInfoById(req.user, req.params)
     response.success(req, res, userInfo, 200)
   } catch (err) {
     console.log(err)
@@ -19,8 +19,8 @@ const idUserInfoById = async (req, res, next) => {
 }
 
 const idUserInfo = async (req, res, next) => {
-    try {
-      const userInfo = await controller.idUserInfo(req.user)
+  try {
+    const userInfo = await controller.idUserInfo(req.user)
     response.success(req, res, userInfo, 200)
   } catch (err) {
     console.log(err)

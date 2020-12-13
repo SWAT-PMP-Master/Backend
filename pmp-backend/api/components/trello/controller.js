@@ -1,6 +1,5 @@
 'use strict'
 
-const config = require('../../../../config/config')
 const trelloAuth = require('../../../utils/auth/trello/index')
 const utils = require('../../../utils/utils')
 
@@ -25,7 +24,7 @@ module.exports = (store) => {
       const boardsTotal = body.data
       let elements = []
       for (let i = 0; i < boardsTotal.length; i++) {
-        let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+        const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
 
         tokenKeyPair.boardId = boardsTotal[i]
         const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
@@ -44,7 +43,7 @@ module.exports = (store) => {
 
   const cardList = async (body, idCard) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.listId = idCard
 
       const data = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPair))
