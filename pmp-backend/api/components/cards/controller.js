@@ -103,7 +103,7 @@ module.exports = (store) => {
   const getStickersOnACard = async (body, params) => {
     const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
     tokenKeyPair.id = params.id
-    const boards = JSON.parse(await trelloAuth(query).getAStickerOnACard(tokenKeyPair))
+    const boards = JSON.parse(await trelloAuth(query).getAStickersOnACard(tokenKeyPair))
     return boards
   }
 

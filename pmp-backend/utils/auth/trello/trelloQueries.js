@@ -26,6 +26,7 @@ class Queries {
   // Actions
 
   async getAnAction (tokenInfo) {
+    console.log(tokenInfo)
     const url = `${this.uri}/1/actions/${tokenInfo.id}`
     const getAnActionPromise = await this.authorizationFn(url, tokenInfo)
     return getAnActionPromise

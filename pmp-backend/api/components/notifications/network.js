@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getANotification = async (req, res, next) => {
   try {
-    const action = await controller.getANotification(req.userm, req.params)
+    const action = await controller.getANotification(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -20,7 +20,7 @@ const getANotification = async (req, res, next) => {
 
 const getAFieldOfANotification = async (req, res, next) => {
   try {
-    const action = await controller.getAFieldOfANotification(req.userm, req.params)
+    const action = await controller.getAFieldOfANotification(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -29,7 +29,7 @@ const getAFieldOfANotification = async (req, res, next) => {
 
 const getTheBoardANotificationIsOn = async (req, res, next) => {
   try {
-    const action = await controller.getTheBoardANotificationIsOn(req.userm, req.params)
+    const action = await controller.getTheBoardANotificationIsOn(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -38,7 +38,7 @@ const getTheBoardANotificationIsOn = async (req, res, next) => {
 
 const getTheCardANotificationIsOn = async (req, res, next) => {
   try {
-    const action = await controller.getTheCardANotificationIsOn(req.userm, req.params)
+    const action = await controller.getTheCardANotificationIsOn(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -47,7 +47,7 @@ const getTheCardANotificationIsOn = async (req, res, next) => {
 
 const getTheListANotificationIsOn = async (req, res, next) => {
   try {
-    const action = await controller.getTheListANotificationIsOn(req.userm, req.params)
+    const action = await controller.getTheListANotificationIsOn(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -56,7 +56,7 @@ const getTheListANotificationIsOn = async (req, res, next) => {
 
 const getTheMemberANotificationIsAbout = async (req, res, next) => {
   try {
-    const action = await controller.getTheMemberANotificationIsAbout(req.userm, req.params)
+    const action = await controller.getTheMemberANotificationIsAbout(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -65,7 +65,7 @@ const getTheMemberANotificationIsAbout = async (req, res, next) => {
 
 const getTheMemberWhoCreatedTheNotification = async (req, res, next) => {
   try {
-    const action = await controller.getTheMemberWhoCreatedTheNotification(req.userm, req.params)
+    const action = await controller.getTheMemberWhoCreatedTheNotification(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -74,7 +74,7 @@ const getTheMemberWhoCreatedTheNotification = async (req, res, next) => {
 
 const getANotificationAssociatedOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getANotificationAssociatedOrganization(req.userm, req.params)
+    const action = await controller.getANotificationAssociatedOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)

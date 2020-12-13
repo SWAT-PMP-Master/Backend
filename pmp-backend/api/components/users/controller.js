@@ -1,5 +1,3 @@
-'use strict'
-
 const trelloAuth = require('../../../utils/auth/trello/index')
 const utils = require('../../../utils/utils')
 
@@ -7,31 +5,24 @@ module.exports = (store) => {
   const query = utils().queryFn()
 
   const idUserInfoById = async (body, params) => {
-    try {
-      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
-      tokenKeyPair.id = params.idUserGet
-      const member = JSON.parse(await trelloAuth(query).getUsers(tokenKeyPair))
-      return member
-    } catch (e) {
-      throw new Error(e)
-    }
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.idUserGet
+    const member = JSON.parse(await trelloAuth(query).getUsers(tokenKeyPair))
+    return member
   }
 
   const idUserInfo = async (body) => {
-    try {
-      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
-      const data = JSON.parse(await trelloAuth(query).getUserInfo(tokenKeyPair))
-      tokenKeyPair.id = data.id
-      const member = JSON.parse(await trelloAuth(query).getUsers(tokenKeyPair))
-      return member
-    } catch (e) {
-      throw new Error(e)
-    }
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    const data = JSON.parse(await trelloAuth(query).getUserInfo(tokenKeyPair))
+    tokenKeyPair.id = data.id
+    const member = JSON.parse(await trelloAuth(query).getUsers(tokenKeyPair))
+    return member
   }
 
   const getAFieldOnAMember = async (body, params) => {
     const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
     tokenKeyPair.id = params.id
+    tokenKeyPair.field = params.field
     const boards = JSON.parse(await trelloAuth(query).getAFieldOnAMember(tokenKeyPair))
     return boards
   }

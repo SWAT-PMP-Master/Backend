@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getAPlugin = async (req, res, next) => {
   try {
-    const action = await controller.getAPlugin(req.userm, req.params)
+    const action = await controller.getAPlugin(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -20,7 +20,7 @@ const getAPlugin = async (req, res, next) => {
 
 const getPluginsMemberPrivacyCompliance = async (req, res, next) => {
   try {
-    const action = await controller.getPluginsMemberPrivacyCompliance(req.userm, req.params)
+    const action = await controller.getPluginsMemberPrivacyCompliance(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)

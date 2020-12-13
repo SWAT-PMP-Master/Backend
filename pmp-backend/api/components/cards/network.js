@@ -154,11 +154,11 @@ const getCustomFieldItemsForACard = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/:id', passport.authenticate('jwt', { session: false }), getACard)
+router.get('/id/:id', passport.authenticate('jwt', { session: false }), getACard)
 router.get('/field/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOnACard)
 router.get('/actions/:id', passport.authenticate('jwt', { session: false }), getActionsOnACard)
 router.get('/attachements/:id', passport.authenticate('jwt', { session: false }), getAttachementsOnACard)
-router.get('/attachment/:id&idAttachment', passport.authenticate('jwt', { session: false }), getAnAttachmentOnACard)
+router.get('/attachement/:id&:idAttachment', passport.authenticate('jwt', { session: false }), getAnAttachmentOnACard)
 router.get('/boards/:id', passport.authenticate('jwt', { session: false }), getTheBoardCardIsOn)
 router.get('/checkItems/:id', passport.authenticate('jwt', { session: false }), getCheckitemsOnABoard)
 router.get('/checkLists/:id', passport.authenticate('jwt', { session: false }), getChecklistsOnABoard)

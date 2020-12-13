@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getAnOrganization(req.userm, req.params)
+    const action = await controller.getAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -20,7 +20,7 @@ const getAnOrganization = async (req, res, next) => {
 
 const getFieldOnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getFieldOnOrganization(req.userm, req.params)
+    const action = await controller.getFieldOnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -29,7 +29,7 @@ const getFieldOnOrganization = async (req, res, next) => {
 
 const getActionsForOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getActionsForOrganization(req.userm, req.params)
+    const action = await controller.getActionsForOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -38,7 +38,7 @@ const getActionsForOrganization = async (req, res, next) => {
 
 const getBoardsInAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getBoardsInAnOrganization(req.userm, req.params)
+    const action = await controller.getBoardsInAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -47,7 +47,7 @@ const getBoardsInAnOrganization = async (req, res, next) => {
 
 const retrieveOrganizationsExports = async (req, res, next) => {
   try {
-    const action = await controller.retrieveOrganizationsExports(req.userm, req.params)
+    const action = await controller.retrieveOrganizationsExports(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -56,7 +56,7 @@ const retrieveOrganizationsExports = async (req, res, next) => {
 
 const getTheMembersOfAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getTheMembersOfAnOrganization(req.userm, req.params)
+    const action = await controller.getTheMembersOfAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -65,7 +65,7 @@ const getTheMembersOfAnOrganization = async (req, res, next) => {
 
 const getMembershipsOfAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getMembershipsOfAnOrganization(req.userm, req.params)
+    const action = await controller.getMembershipsOfAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -74,7 +74,7 @@ const getMembershipsOfAnOrganization = async (req, res, next) => {
 
 const getAMembershipOfAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getAMembershipOfAnOrganization(req.userm, req.params)
+    const action = await controller.getAMembershipOfAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -83,7 +83,7 @@ const getAMembershipOfAnOrganization = async (req, res, next) => {
 
 const getThePluginDataScoped = async (req, res, next) => {
   try {
-    const action = await controller.getThePluginDataScoped(req.userm, req.params)
+    const action = await controller.getThePluginDataScoped(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -92,7 +92,7 @@ const getThePluginDataScoped = async (req, res, next) => {
 
 const getTagsOfAnOrganization = async (req, res, next) => {
   try {
-    const action = await controller.getTagsOfAnOrganization(req.userm, req.params)
+    const action = await controller.getTagsOfAnOrganization(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -101,7 +101,7 @@ const getTagsOfAnOrganization = async (req, res, next) => {
 
 const getOrganizationsNewBillableGuests = async (req, res, next) => {
   try {
-    const action = await controller.getOrganizationsNewBillableGuests(req.userm, req.params)
+    const action = await controller.getOrganizationsNewBillableGuests(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)

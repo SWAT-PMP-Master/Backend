@@ -20,7 +20,7 @@ const searchTrello = async (req, res, next) => {
 
 const searchForMembers = async (req, res, next) => {
   try {
-    const action = await controller.searchForMembers(req.userm)
+    const action = await controller.searchForMembers(req.user)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
