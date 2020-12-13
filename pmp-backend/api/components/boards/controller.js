@@ -35,10 +35,109 @@ module.exports = (store) => {
     return board
   }
 
+  const getACardOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    tokenKeyPair.idCard = params.idCard
+    const board = JSON.parse(await trelloAuth(query).getACardOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getBoardsStartsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.boardsId = params.boardsId
+    const board = JSON.parse(await trelloAuth(query).getBoardsStartsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getChecklistsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getChecklistsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getCardsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getCardsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getFilteredCardsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    tokenKeyPair.filter = params.filter
+    const board = JSON.parse(await trelloAuth(query).getFilteredCardsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getCustomFieldsForBand = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getCustomFieldsForBand(tokenKeyPair))
+    return board
+  }
+
+  const getLabelsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getLabelsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getFilteredListsOnAboard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.boardId = params.boardId
+    const board = JSON.parse(await trelloAuth(query).getFilteredListsOnAboard(tokenKeyPair))
+    return board
+  }
+
+  const getTheMembersOfABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    tokenKeyPair.filter = params.filter
+    const board = JSON.parse(await trelloAuth(query).getTheMembersOfABoard(tokenKeyPair))
+    return board
+  }
+
+  const getEnabledPowerupsOnBoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getEnabledPowerupsOnBoard(tokenKeyPair))
+    return board
+  }
+
+  const getPowerupsOnABoard = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const board = JSON.parse(await trelloAuth(query).getPowerupsOnABoard(tokenKeyPair))
+    return board
+  }
+
+  const getBoardLists = async (body, params) => {
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.boardId = params.boardId
+    const board = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
+    return board
+  }
+
   return {
     boardsMember,
     getABoard,
     getABoardField,
-    getABoardAction
+    getABoardAction,
+    getACardOnABoard,
+    getBoardsStartsOnABoard,
+    getChecklistsOnABoard,
+    getCardsOnABoard,
+    getFilteredCardsOnABoard,
+    getCustomFieldsForBand,
+    getLabelsOnABoard,
+    getBoardLists,
+    getFilteredListsOnAboard,
+    getTheMembersOfABoard,
+    getEnabledPowerupsOnBoard,
+    getPowerupsOnABoard
   }
 }
