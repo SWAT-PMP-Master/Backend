@@ -29,6 +29,6 @@ const getPluginsMemberPrivacyCompliance = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getAPlugin)
-router.get('/pluginMember/:id', passport.authenticate('jwt', { session: false }), getPluginsMemberPrivacyCompliance)
+router.get('/member/:id', passport.authenticate('jwt', { session: false }), getPluginsMemberPrivacyCompliance)
 
 module.exports = router

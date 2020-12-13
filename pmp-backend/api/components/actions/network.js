@@ -110,15 +110,15 @@ const listActionSummaryOfReactions = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:idAction', passport.authenticate('jwt', { session: false }), getAnAction)
-router.get('/specifiedAction/:idAction&:field', passport.authenticate('jwt', { session: false }), getASpecificFieldOnAnAction)
-router.get('/boardAction/:idAction', passport.authenticate('jwt', { session: false }), getTheBoardForAnAction)
-router.get('/cardAction/:idAction', passport.authenticate('jwt', { session: false }), getTheCardForAnAction)
-router.get('/listAction/:idAction', passport.authenticate('jwt', { session: false }), getTheListForAnAction)
-router.get('/memberAction/:idAction', passport.authenticate('jwt', { session: false }), getTheMemberOfAnAction)
+router.get('/specified/:idAction&:field', passport.authenticate('jwt', { session: false }), getASpecificFieldOnAnAction)
+router.get('/board/:idAction', passport.authenticate('jwt', { session: false }), getTheBoardForAnAction)
+router.get('/card/:idAction', passport.authenticate('jwt', { session: false }), getTheCardForAnAction)
+router.get('/list/:idAction', passport.authenticate('jwt', { session: false }), getTheListForAnAction)
+router.get('/member/:idAction', passport.authenticate('jwt', { session: false }), getTheMemberOfAnAction)
 router.get('/memberCreator/:idAction', passport.authenticate('jwt', { session: false }), getTheMemberCreatorOfAnAction)
 router.get('/organization/:idAction', passport.authenticate('jwt', { session: false }), getTheOrganizationOfAnAction)
-router.get('/actionsReactions/:idAction', passport.authenticate('jwt', { session: false }), getActionsReactions)
-router.get('/actionReaction/:idAction', passport.authenticate('jwt', { session: false }), getActionReaction)
+router.get('/reactions/:idAction', passport.authenticate('jwt', { session: false }), getActionsReactions)
+router.get('/reaction/:idAction', passport.authenticate('jwt', { session: false }), getActionReaction)
 router.get('/summary/:idAction', passport.authenticate('jwt', { session: false }), listActionSummaryOfReactions)
 
 module.exports = router

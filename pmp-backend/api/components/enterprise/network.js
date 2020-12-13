@@ -74,11 +74,11 @@ const getWhetherAnOrganizationCanBe = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getAnEnterprise)
-router.get('/dataEnterprise/:id', passport.authenticate('jwt', { session: false }), getAuditlogDataForAnEnterprise)
+router.get('/data/:id', passport.authenticate('jwt', { session: false }), getAuditlogDataForAnEnterprise)
 router.get('/adminMembers/:id', passport.authenticate('jwt', { session: false }), getEnterpriseAdminMembers)
 router.get('/signup/:id', passport.authenticate('jwt', { session: false }), getSignupForEnterprise)
 router.get('/members/:id', passport.authenticate('jwt', { session: false }), getMembersOfEnterprise)
-router.get('/membersEnterprise/:id&idMember', passport.authenticate('jwt', { session: false }), getAMemberOfEntreprise)
+router.get('/member/:id&idMember', passport.authenticate('jwt', { session: false }), getAMemberOfEntreprise)
 router.get('/organizations/:id&:idOrganization', passport.authenticate('jwt', { session: false }), getWhetherAnOrganizationCanBe)
 
 module.exports = router

@@ -83,10 +83,10 @@ const getANotificationAssociatedOrganization = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getANotification)
-router.get('/notifications/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOfANotification)
-router.get('/boardNorification/:id', passport.authenticate('jwt', { session: false }), getTheBoardANotificationIsOn)
-router.get('/notificationCard/:id', passport.authenticate('jwt', { session: false }), getTheCardANotificationIsOn)
-router.get('/notificationList/:id', passport.authenticate('jwt', { session: false }), getTheListANotificationIsOn)
+router.get('/field/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOfANotification)
+router.get('/board/:id', passport.authenticate('jwt', { session: false }), getTheBoardANotificationIsOn)
+router.get('/card/:id', passport.authenticate('jwt', { session: false }), getTheCardANotificationIsOn)
+router.get('/list/:id', passport.authenticate('jwt', { session: false }), getTheListANotificationIsOn)
 router.get('/notifications/:id', passport.authenticate('jwt', { session: false }), getTheMemberANotificationIsAbout)
 router.get('/notificationCreator/:id', passport.authenticate('jwt', { session: false }), getTheMemberWhoCreatedTheNotification)
 router.get('/notificationOrganization/:id', passport.authenticate('jwt', { session: false }), getANotificationAssociatedOrganization)

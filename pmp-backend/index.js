@@ -47,7 +47,6 @@ const index = () => {
   routes(app).enterpriseRoute()
   routes(app).labelsRoute()
   routes(app).listRoute()
-  routes(app).membersRoute()
   routes(app).notificationsRoute()
   routes(app).organizationsRoute()
   routes(app).pluginsRoute()

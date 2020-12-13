@@ -14,7 +14,6 @@ const emojis = require('../api/components/emojis/network')
 const enterprise = require('../api/components/enterprise/network')
 const labels = require('../api/components/labels/network')
 const list = require('../api/components/list/network')
-const members = require('../api/components/members/network')
 const notifications = require('../api/components/notifications/network')
 const organizations = require('../api/components/organizations/network')
 const plugins = require('../api/components/plugins/network')
@@ -30,7 +29,7 @@ const routes = (app) => {
   const trelloRoute = () => app.use('/trello', trello)
   const usersRoute = () => app.use('/user', users)
   const boardsRoute = () => app.use('/boards', boards)
-  const actionsRoute = () => app.use('/actionsRoute', actions)
+  const actionsRoute = () => app.use('/actions', actions)
   const checklistRoute = () => app.use('/checklist', checklist)
   const cardsRoute = () => app.use('/cards', cards)
   const customFieldsRoute = () => app.use('/customFields', customFields)
@@ -38,7 +37,6 @@ const routes = (app) => {
   const enterpriseRoute = () => app.use('/enterprise', enterprise)
   const labelsRoute = () => app.use('/labels', labels)
   const listRoute = () => app.use('/list', list)
-  const membersRoute = () => app.use('/members', members)
   const notificationsRoute = () => app.use('/notifications', notifications)
   const organizationsRoute = () => app.use('/organizations', organizations)
   const pluginsRoute = () => app.use('/plugins', plugins)
@@ -61,7 +59,6 @@ const routes = (app) => {
     enterpriseRoute,
     labelsRoute,
     listRoute,
-    membersRoute,
     notificationsRoute,
     organizationsRoute,
     pluginsRoute,

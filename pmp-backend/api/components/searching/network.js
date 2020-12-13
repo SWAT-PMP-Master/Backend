@@ -28,6 +28,6 @@ const searchForMembers = async (req, res, next) => {
 }
 // passport.authenticate('jwt', { session: false }),
 router.get('/', passport.authenticate('jwt', { session: false }), searchTrello)
-router.get('/', passport.authenticate('jwt', { session: false }), searchForMembers)
+router.get('/member', passport.authenticate('jwt', { session: false }), searchForMembers)
 
 module.exports = router

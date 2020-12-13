@@ -154,14 +154,14 @@ const getACardOnABoard = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/boardsMemberShip/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
+router.get('/memberShip/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
 router.get('/:board', passport.authenticate('jwt', { session: false }), boards)
 router.get('/boardsAndField/:board&:field', passport.authenticate('jwt', { session: false }), boardsField)
-router.get('/boardsAction/:board', passport.authenticate('jwt', { session: false }), boardsAction)
-router.get('/boardCards/:id&:idCard', passport.authenticate('jwt', { session: false }), getACardOnABoard)
-router.get('/boardsStarts/:boardId', passport.authenticate('jwt', { session: false }), getBoardsStartsOnABoard)
-router.get('/boardChecklists/:id', passport.authenticate('jwt', { session: false }), getChecklistsOnABoard)
-router.get('/boardCard/:id', passport.authenticate('jwt', { session: false }), getCardsOnABoard)
+router.get('/action/:board', passport.authenticate('jwt', { session: false }), boardsAction)
+router.get('/cards/:id&:idCard', passport.authenticate('jwt', { session: false }), getACardOnABoard)
+router.get('/starts/:boardId', passport.authenticate('jwt', { session: false }), getBoardsStartsOnABoard)
+router.get('/checklists/:id', passport.authenticate('jwt', { session: false }), getChecklistsOnABoard)
+router.get('/card/:id', passport.authenticate('jwt', { session: false }), getCardsOnABoard)
 router.get('/cardsFiltered/:id&:filter', passport.authenticate('jwt', { session: false }), getFilteredCardsOnABoard)
 router.get('/fieldsForBand/:id', passport.authenticate('jwt', { session: false }), getCustomFieldsForBand)
 router.get('/labels/:id', passport.authenticate('jwt', { session: false }), getLabelsOnABoard)

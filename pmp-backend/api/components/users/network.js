@@ -226,19 +226,19 @@ const getUserTrelloBoards = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/user/:idUserGet', passport.authenticate('jwt', { session: false }), idUserInfoById)
+router.get('/:idUserGet', passport.authenticate('jwt', { session: false }), idUserInfoById)
 router.get('/userInfo', passport.authenticate('jwt', { session: false }), idUserInfo)
 router.get('/member/:id', passport.authenticate('jwt', { session: false }), getAFieldOnAMember)
 router.get('/action/:id', passport.authenticate('jwt', { session: false }), getAMembersActions)
-router.get('/customBoards/:id', passport.authenticate('jwt', { session: false }), getMembersCustomBoardBack)
+router.get('/custom/:id', passport.authenticate('jwt', { session: false }), getMembersCustomBoardBack)
 router.get('/boardBackgroud/:id&:idBackground', passport.authenticate('jwt', { session: false }), getABoardBackOfAMember)
 router.get('/starts/:id', passport.authenticate('jwt', { session: false }), getAMembersBoardStars)
-router.get('/boardStart/:id&:idStar', passport.authenticate('jwt', { session: false }), getABoardStarOfMember)
+router.get('/start/:id&:idStar', passport.authenticate('jwt', { session: false }), getABoardStarOfMember)
 router.get('/belong/:id', passport.authenticate('jwt', { session: false }), getBoardsThatMemberBelongsTo)
 router.get('/invited/:id', passport.authenticate('jwt', { session: false }), getBoardsTheMemberHasBeenInvitedTo)
 router.get('/cards/:id', passport.authenticate('jwt', { session: false }), getCardsTheMemberIsOn)
 router.get('/customBoard/:id', passport.authenticate('jwt', { session: false }), getAMembersCustomBoardBack)
-router.get('/customBackgroun/:id&:idBackground', passport.authenticate('jwt', { session: false }), getCustomBoardBackOfMember)
+router.get('/customBackground/:id&:idBackground', passport.authenticate('jwt', { session: false }), getCustomBoardBackOfMember)
 router.get('/customEmojis/:id', passport.authenticate('jwt', { session: false }), getAMembersCustomEmojis)
 router.get('/customEmoji/:id&:idEmoji', passport.authenticate('jwt', { session: false }), getAMembersCustomEmoji)
 router.get('/customStickers/:id', passport.authenticate('jwt', { session: false }), getMemberscustomStickers)
