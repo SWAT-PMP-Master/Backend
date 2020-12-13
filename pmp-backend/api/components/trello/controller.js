@@ -1,24 +1,17 @@
 'use strict'
 
-const config = require('../../../../config/config')
 const trelloAuth = require('../../../utils/auth/trello/index')
+const utils = require('../../../utils/utils')
+
 // const boom = require('@hapi/boom')
 // const jwt = require('jsonwebtoken')
 
-const query = {
-  appKey: config(false).trelloId,
-  appSecret: config(false).trelloSecret,
-  callbackUrl: config(false).apiUrl
-}
+const query = utils().queryFn()
 
 module.exports = (store) => {
   const boardsInfo = async (body) => {
     try {
-      const tokenKeyPair = {
-        accToken: body.token.trelloSecretUser,
-        accTokenSecrete: config(false).trelloSecret
-      }
-
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       const data = JSON.parse(await trelloAuth(query).getUserTrelloBoards(tokenKeyPair))
       return data
     } catch (err) {
@@ -31,26 +24,17 @@ module.exports = (store) => {
       const boardsTotal = body.data
       let elements = []
       for (let i = 0; i < boardsTotal.length; i++) {
-        const tokenKeyPair = {
-          accToken: body.token.trelloSecretUser,
-          accTokenSecrete: config(false).trelloSecret,
-          boardId: boardsTotal[i]
-        }
+        const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+
+        tokenKeyPair.boardId = boardsTotal[i]
         const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
         for (let j = 0; j < data.length; j++) {
-          const tokenKeyPairCard = {
-            accToken: body.token.trelloSecretUser,
-            accTokenSecrete: config(false).trelloSecret,
-            listId: data[j].id
-          }
+          const tokenKeyPairCard = utils().tokenKeyPairCardFn(body.token.trelloSecretUser, data[j].id)
           const dataCard = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPairCard))
-
           data[j].list = dataCard
         }
-
         elements = elements.concat([data])
       }
-
       return elements
     } catch (err) {
       console.error(err)
@@ -59,11 +43,8 @@ module.exports = (store) => {
 
   const cardList = async (body, idCard) => {
     try {
-      const tokenKeyPair = {
-        accToken: body.token.trelloSecretUser,
-        accTokenSecrete: config(false).trelloSecret,
-        listId: idCard
-      }
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      tokenKeyPair.listId = idCard
 
       const data = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPair))
       return data

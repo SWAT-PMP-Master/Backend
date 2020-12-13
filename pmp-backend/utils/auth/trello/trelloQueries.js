@@ -4,33 +4,14 @@ class Queries {
     this.oauth = oauth
   }
 
-  getUserInfo (tokenkeyPair) {
+  authorizationFn (url, tokenInfo) {
     const self = this
-    const userInfoPromise = new Promise(function (resolve, reject) {
+    const authPromise = new Promise((resolve, reject) => {
       self.oauth.get(
-        `${self.uri}/1/members/me`,
-        tokenkeyPair.accessToken,
-        tokenkeyPair.accessTokenSecrete,
-        function (error, data, response) {
-          if (!error) {
-            resolve(data)
-          } else {
-            reject(error)
-          }
-        }
-      )
-    })
-    return userInfoPromise
-  };
-
-  getUserTrelloBoards (tokenInfo) {
-    const self = this
-    const userBoardsPromise = new Promise(function (resolve, reject) {
-      self.oauth.get(
-        `${self.uri}/1/members/me/boards`,
+        url,
         tokenInfo.accToken,
         tokenInfo.accTokenSecrete,
-        function (err, data, response) {
+        (err, data, response) => {
           if (!err) {
             resolve(data)
           } else {
@@ -39,47 +20,62 @@ class Queries {
         }
       )
     })
+    return authPromise
+  }
 
+  async getUsers (tokenkeyPair) {
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}`
+    const userInfoPromise = await this.authorizationFn(url, tokenkeyPair)
+    return userInfoPromise
+  }
+
+  async getUserInfo (tokenkeyPair) {
+    const url = `${this.uri}/1/members/me`
+    const userInfoPromise = await this.authorizationFn(url, tokenkeyPair)
+    return userInfoPromise
+  }
+
+  async getMemberShipBoards (tokenInfo) {
+    const url = `${this.uri}/1/boards/${tokenInfo.id}/memberships`
+    const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
     return userBoardsPromise
-  };
+  }
 
-  getBoardLists (boardIdAndTokenInfo) {
-    const self = this
-    const boardlistsPromise = new Promise(function (resolve, reject) {
-      self.oauth.get(
-        `${self.uri}/1/boards/${boardIdAndTokenInfo.boardId}/lists`,
-        boardIdAndTokenInfo.accToken,
-        boardIdAndTokenInfo.accTokenSecrete,
-        function (err, data, response) {
-          if (!err) {
-            resolve(data)
-          } else {
-            reject(err)
-          }
-        }
-      )
-    })
+  async getBoardAction (tokenInfo) {
+    const url = `${this.uri}/1/boards/${tokenInfo.id}/actions`
+    const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
+    return userBoardsPromise
+  }
+
+  async getBoardfield (tokenInfo) {
+    const url = `${this.uri}/1/boards/${tokenInfo.id}/${tokenInfo.field}`
+    const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
+    return userBoardsPromise
+  }
+
+  async getBoard (tokenInfo) {
+    const url = `${this.uri}/1/boards/${tokenInfo.id}`
+    const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
+    return userBoardsPromise
+  }
+
+  async getUserTrelloBoards (tokenInfo) {
+    const url = `${this.uri}/1/members/me/boards`
+    const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
+    return userBoardsPromise
+  }
+
+  async getBoardLists (boardIdAndTokenInfo) {
+    const url = `${this.uri}/1/boards/${boardIdAndTokenInfo.boardId}/lists`
+    const boardlistsPromise = await this.authorizationFn(url, boardIdAndTokenInfo)
     return boardlistsPromise
-  };
+  }
 
-  getCardsOnList (boardListAndTokenInfo) {
-    const self = this
-    const cardsOnListPromise = new Promise(function (resolve, reject) {
-      self.oauth.get(
-        `${self.uri}/1/lists/${boardListAndTokenInfo.listId}/cards`,
-        boardListAndTokenInfo.accToken,
-        boardListAndTokenInfo.accTokenSecrete,
-        function (err, data, response) {
-          if (!err) {
-            resolve(data)
-          } else {
-            reject(err)
-          }
-        }
-      )
-    })
+  async getCardsOnList (boardListAndTokenInfo) {
+    const url = `${this.uri}/1/lists/${boardListAndTokenInfo.listId}/cards`
+    const cardsOnListPromise = await this.authorizationFn(url, boardListAndTokenInfo)
     return cardsOnListPromise
-  };
+  }
 }
 
 module.exports.Queries = Queries
