@@ -37,7 +37,7 @@ npm run start
 
 ## License 📄
 
-This project is under the License (MIT)
+[This project is under the License (MIT)](https://github.com/SWAT-PMP-Master/Backend/blob/master/LICENSE)
 
 ## Acknowledgements 🎁
 
