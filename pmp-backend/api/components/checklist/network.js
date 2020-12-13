@@ -65,10 +65,10 @@ const getACheckitemOnAChecklist = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getAChecklist)
-router.get('/checklist/:id&:field', passport.authenticate('jwt', { session: false }), getFieldOnAChecklist)
-router.get('/boardChecklist/:id', passport.authenticate('jwt', { session: false }), getTheBoardTheChecklistIsOn)
-router.get('/cardChecklist/:id', passport.authenticate('jwt', { session: false }), getTheCardAChecklistIsOn)
-router.get('/itemsChecklist/:id', passport.authenticate('jwt', { session: false }), getCheckitemsOnAChecklist)
+router.get('/field/:id&:field', passport.authenticate('jwt', { session: false }), getFieldOnAChecklist)
+router.get('/board/:id', passport.authenticate('jwt', { session: false }), getTheBoardTheChecklistIsOn)
+router.get('/card/:id', passport.authenticate('jwt', { session: false }), getTheCardAChecklistIsOn)
+router.get('/items/:id', passport.authenticate('jwt', { session: false }), getCheckitemsOnAChecklist)
 router.get('/checkitems/:id', passport.authenticate('jwt', { session: false }), getACheckitemOnAChecklist)
 
 module.exports = router

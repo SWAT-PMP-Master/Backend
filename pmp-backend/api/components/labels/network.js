@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getALabel = async (req, res, next) => {
   try {
-    const action = await controller.getALabel(req.userm, req.params)
+    const action = await controller.getALabel(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -19,6 +19,6 @@ const getALabel = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/:id', passport.authenticate('jwt', { session: false }), getALabel)
+router.get('/id/:id', passport.authenticate('jwt', { session: false }), getALabel)
 
 module.exports = router

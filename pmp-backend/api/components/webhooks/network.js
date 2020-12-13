@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getAWebhook = async (req, res, next) => {
   try {
-    const action = await controller.getAWebhook(req.userm, req.params)
+    const action = await controller.getAWebhook(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -20,7 +20,7 @@ const getAWebhook = async (req, res, next) => {
 
 const getAFieldOnAWebhook = async (req, res, next) => {
   try {
-    const action = await controller.getAFieldOnAWebhook(req.userm, req.params)
+    const action = await controller.getAFieldOnAWebhook(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)

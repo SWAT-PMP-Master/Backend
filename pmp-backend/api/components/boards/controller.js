@@ -45,7 +45,7 @@ module.exports = (store) => {
 
   const getBoardsStartsOnABoard = async (body, params) => {
     const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
-    tokenKeyPair.boardsId = params.boardsId
+    tokenKeyPair.boardId = params.boardId
     const board = JSON.parse(await trelloAuth(query).getBoardsStartsOnABoard(tokenKeyPair))
     return board
   }

@@ -154,21 +154,21 @@ const getCustomFieldItemsForACard = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/:id', passport.authenticate('jwt', { session: false }), getACard)
-router.get('/fieldCard/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOnACard)
-router.get('/actionsCard/:id', passport.authenticate('jwt', { session: false }), getActionsOnACard)
+router.get('/id/:id', passport.authenticate('jwt', { session: false }), getACard)
+router.get('/field/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOnACard)
+router.get('/actions/:id', passport.authenticate('jwt', { session: false }), getActionsOnACard)
 router.get('/attachements/:id', passport.authenticate('jwt', { session: false }), getAttachementsOnACard)
-router.get('/attachmentOnCard/:id&idAttachment', passport.authenticate('jwt', { session: false }), getAnAttachmentOnACard)
-router.get('/boardsCards/:id', passport.authenticate('jwt', { session: false }), getTheBoardCardIsOn)
+router.get('/attachement/:id&:idAttachment', passport.authenticate('jwt', { session: false }), getAnAttachmentOnACard)
+router.get('/boards/:id', passport.authenticate('jwt', { session: false }), getTheBoardCardIsOn)
 router.get('/checkItems/:id', passport.authenticate('jwt', { session: false }), getCheckitemsOnABoard)
 router.get('/checkLists/:id', passport.authenticate('jwt', { session: false }), getChecklistsOnABoard)
-router.get('/checkItemOnACard/:id&:idCheckItem', passport.authenticate('jwt', { session: false }), getCheckItemOnACard)
-router.get('/listCard/:id', passport.authenticate('jwt', { session: false }), getTheListOfACard)
-router.get('/memberCard/:id', passport.authenticate('jwt', { session: false }), getTheMembersOfACard)
+router.get('/checkItem/:id&:idCheckItem', passport.authenticate('jwt', { session: false }), getCheckItemOnACard)
+router.get('/list/:id', passport.authenticate('jwt', { session: false }), getTheListOfACard)
+router.get('/member/:id', passport.authenticate('jwt', { session: false }), getTheMembersOfACard)
 router.get('/membersVoted/:id', passport.authenticate('jwt', { session: false }), getMembersWhoHaveVotedOnACard)
 router.get('/pluginData/:id', passport.authenticate('jwt', { session: false }), getPluginDataOnACard)
 router.get('/stickers/:id', passport.authenticate('jwt', { session: false }), getStickersOnACard)
-router.get('/stickersCard/:id&:idSticker', passport.authenticate('jwt', { session: false }), getAStickerOnACard)
+router.get('/sticker/:id&:idSticker', passport.authenticate('jwt', { session: false }), getAStickerOnACard)
 router.get('/customField/:id', passport.authenticate('jwt', { session: false }), getCustomFieldItemsForACard)
 
 module.exports = router

@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const getAnEnterprise = async (req, res, next) => {
   try {
-    const action = await controller.getAnEnterprise(req.userm, req.params)
+    const action = await controller.getAnEnterprise(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -20,7 +20,7 @@ const getAnEnterprise = async (req, res, next) => {
 
 const getAuditlogDataForAnEnterprise = async (req, res, next) => {
   try {
-    const action = await controller.getAuditlogDataForAnEnterprise(req.userm, req.params)
+    const action = await controller.getAuditlogDataForAnEnterprise(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -29,7 +29,7 @@ const getAuditlogDataForAnEnterprise = async (req, res, next) => {
 
 const getEnterpriseAdminMembers = async (req, res, next) => {
   try {
-    const action = await controller.getEnterpriseAdminMembers(req.userm, req.params)
+    const action = await controller.getEnterpriseAdminMembers(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -38,7 +38,7 @@ const getEnterpriseAdminMembers = async (req, res, next) => {
 
 const getSignupForEnterprise = async (req, res, next) => {
   try {
-    const action = await controller.getSignupForEnterprise(req.userm, req.params)
+    const action = await controller.getSignupForEnterprise(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -47,7 +47,7 @@ const getSignupForEnterprise = async (req, res, next) => {
 
 const getMembersOfEnterprise = async (req, res, next) => {
   try {
-    const action = await controller.getMembersOfEnterprise(req.userm, req.params)
+    const action = await controller.getMembersOfEnterprise(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -56,7 +56,7 @@ const getMembersOfEnterprise = async (req, res, next) => {
 
 const getAMemberOfEntreprise = async (req, res, next) => {
   try {
-    const action = await controller.getAMemberOfEntreprise(req.userm, req.params)
+    const action = await controller.getAMemberOfEntreprise(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -65,7 +65,7 @@ const getAMemberOfEntreprise = async (req, res, next) => {
 
 const getWhetherAnOrganizationCanBe = async (req, res, next) => {
   try {
-    const action = await controller.getWhetherAnOrganizationCanBe(req.userm, req.params)
+    const action = await controller.getWhetherAnOrganizationCanBe(req.user, req.params)
     response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
@@ -74,11 +74,11 @@ const getWhetherAnOrganizationCanBe = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getAnEnterprise)
-router.get('/dataEnterprise/:id', passport.authenticate('jwt', { session: false }), getAuditlogDataForAnEnterprise)
+router.get('/data/:id', passport.authenticate('jwt', { session: false }), getAuditlogDataForAnEnterprise)
 router.get('/adminMembers/:id', passport.authenticate('jwt', { session: false }), getEnterpriseAdminMembers)
 router.get('/signup/:id', passport.authenticate('jwt', { session: false }), getSignupForEnterprise)
 router.get('/members/:id', passport.authenticate('jwt', { session: false }), getMembersOfEnterprise)
-router.get('/membersEnterprise/:id&idMember', passport.authenticate('jwt', { session: false }), getAMemberOfEntreprise)
+router.get('/member/:id&:idMember', passport.authenticate('jwt', { session: false }), getAMemberOfEntreprise)
 router.get('/organizations/:id&:idOrganization', passport.authenticate('jwt', { session: false }), getWhetherAnOrganizationCanBe)
 
 module.exports = router
