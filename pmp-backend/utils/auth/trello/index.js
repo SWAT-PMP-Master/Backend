@@ -5,7 +5,6 @@ const Queries = require('./trelloQueries').Queries
 
 const query = function query (options) {
   return new Queries(new OAuth(options).configOAuth())
-  // return new Queries({})
 }
 
 module.exports = query
