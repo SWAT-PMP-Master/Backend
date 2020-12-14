@@ -5,6 +5,8 @@ const utils = require('../../../utils/utils')
 
 module.exports = (store) => {
 
+  const query = utils().queryFn()
+
   const getAnEnterprise = async (body, params) => {
     let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
     tokenKeyPair.id = params.id
