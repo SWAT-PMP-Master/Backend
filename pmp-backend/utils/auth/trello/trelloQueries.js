@@ -245,12 +245,6 @@ class Queries {
     return getCheckItemOnACardPromise
   }
 
-  async getCheckItemOnACard (tokenInfo) {
-    const url = `${this.uri}/1/cards/${tokenInfo.id}/checkItem/${tokenInfo.idCheckItem}`
-    const getCheckItemOnACardPromise = await this.authorizationFn(url, tokenInfo)
-    return getCheckItemOnACardPromise
-  }
-
   async getTheListOfACard (tokenInfo) {
     const url = `${this.uri}/1/cards/${tokenInfo.id}/list`
     const getTheListOfACardPromise = await this.authorizationFn(url, tokenInfo)
