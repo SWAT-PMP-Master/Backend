@@ -1,17 +1,58 @@
 'use strict'
 
-const trelloAuth = require('../../../utils/auth/trello/index')
-const utils = require('../../../utils/utils')
+// const trelloAuth = require('../../../utils/auth/trello/index')
+// const utils = require('../../../utils/utils')
 const boards = require('../trello/index')
 
 module.exports = (store) => {
-  const query = utils().queryFn()
+  // const query = utils().queryFn()
 
-  const getBoardsPercen = async (body) => {
-    const data = boards.boardsList(body)
-    console.log(data)
-    console.log(trelloAuth)
-    console.log(query)
+  const getBoardsPercen = async (body, params) => {
+    body.data = [params.idBoard]
+    const elements = []
+    const data = await boards.boardsList(body)
+    elements.Boards = data[0].length
+    const cards = data[0]
+    let listTotal = 0
+    cards.forEach(el => {
+      listTotal += el.list.length
+    })
+    listTotal -= elements.Boards
+    elements.TotalCards = listTotal
+    let names = []
+    cards.forEach(el => {
+      let checkList = []
+      el.list.forEach(ele => {
+        checkList = checkList.concat(ele.idChecklists)
+      })
+
+      const totalCardsList = el.list.length - 1
+      const tempNames = {
+        name: el.name,
+        cards: totalCardsList,
+        lists: el.list,
+        checkList: checkList
+      }
+      names = names.concat(tempNames)
+    })
+    elements.BoardsNames = names
+    elements.BoardsNames.forEach(el => {
+      if (el.name === 'Done') {
+        const totalProject = el.cards / elements.TotalCards
+        elements.TotalProject = `${totalProject.toFixed(2) * 100}%`
+      } else if (el.name === 'Backlog') {
+        const backlogProject = el.cards / elements.TotalCards
+        elements.BacklogProject = `${backlogProject.toFixed(2) * 100}%`
+      } else if (el.name === 'To Do') {
+        const toDoProject = el.cards / elements.TotalCards
+        elements.ToDoProject = `${toDoProject.toFixed(2) * 100}%`
+      } else if (el.name === 'Doing') {
+        const doingProject = el.cards / elements.TotalCards
+        elements.TotalDoing = `${doingProject.toFixed(2) * 100}%`
+      }
+    })
+
+    return elements
   }
 
   const getMainCardPercen = async (body) => {
