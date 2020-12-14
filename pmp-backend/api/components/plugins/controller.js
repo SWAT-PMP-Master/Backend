@@ -4,15 +4,23 @@ const trelloAuth = require('../../../utils/auth/trello/index')
 const utils = require('../../../utils/utils')
 
 module.exports = (store) => {
-  const idUserInfoById = async (body, params) => {
-    try {
 
-    } catch (e) {
-      throw new Error(e)
-    }
+  const getAPlugin = async (body, params) => {
+    let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const boards = JSON.parse(await trelloAuth(query).getAPlugin(tokenKeyPair))
+    return boards
+  }
+
+  const getPluginsMemberPrivacyCompliance = async (body, params) => {
+    let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    tokenKeyPair.id = params.id
+    const boards = JSON.parse(await trelloAuth(query).getPluginsMemberPrivacyCompliance(tokenKeyPair))
+    return boards
   }
 
   return {
-    idUserInfo
+    getAPlugin,
+    getPluginsMemberPrivacyCompliance
   }
 }
