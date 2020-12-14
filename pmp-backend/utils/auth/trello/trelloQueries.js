@@ -24,12 +24,12 @@ class Queries {
   }
 
   // Actions
- 
+
   async getAnAction (tokenInfo) {
     const url = `${this.uri}/1/actions/${tokenInfo.id}`
     const getAnActionPromise = await this.authorizationFn(url, tokenInfo)
     return getAnActionPromise
-  } 
+  }
 
   async getASpecificFieldOnAnAction (tokenInfo) {
     const url = `${this.uri}/1/actions/${tokenInfo.id}/${tokeninfo.field}`
@@ -92,7 +92,7 @@ class Queries {
   }
 
   // Boards
-  
+
   async getMemberShipBoards (tokenInfo) {
     const url = `${this.uri}/1/boards/${tokenInfo.id}/memberships`
     const userBoardsPromise = await this.authorizationFn(url, tokenInfo)
@@ -190,7 +190,7 @@ class Queries {
   }
 
   // Cards
-  
+
   async getACard (tokenInfo) {
     const url = `${this.uri}/1/cards/${tokenInfo.id}`
     const getACardPromise = await this.authorizationFn(url, tokenInfo)
@@ -294,7 +294,7 @@ class Queries {
   }
 
   // Checklist
-  
+
   async getAChecklist (tokenInfo) {
     const url = `${this.uri}/1/checklists/${tokenInfo.id}`
     const getAChecklistPromise = await this.authorizationFn(url, tokenInfo)
@@ -332,7 +332,7 @@ class Queries {
   }
 
   // Custom Fields
-  
+
   async getACustomField (tokenInfo) {
     const url = `${this.uri}/1/customFields/${tokenInfo.id}`
     const getACustomFieldPromise = await this.authorizationFn(url, tokenInfo)
@@ -352,7 +352,7 @@ class Queries {
   }
 
   // Emojis
-  
+
   async getListAvailableEmoji () {
     const url = `${this.uri}/1/emoji/`
     const getListAvailableEmojiPromise = await this.authorizationFn(url, tokenInfo)
@@ -360,7 +360,7 @@ class Queries {
   }
 
   // Enterprise
-  
+
   async getAnEnterprise (tokenInfo) {
     const url = `${this.uri}/1/enterprise/${tokenInfo.id}`
     const getAnEnterprisePromise = await this.authorizationFn(url, tokenInfo)
@@ -410,7 +410,7 @@ class Queries {
   }
 
   // Labels
-  
+
   async getALabel (tokenInfo) {
     const url = `${this.uri}/1/labels/${tokenInfo.id}`
     const getALabelPromise = await this.authorizationFn(url, tokenInfo)
@@ -424,141 +424,141 @@ class Queries {
     const cardsOnListPromise = await this.authorizationFn(url, boardListAndTokenInfo)
     return cardsOnListPromise
   }
- 
+
   // Members
-  
+
   async getUsers (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}`
     const userInfoPromise = await this.authorizationFn(url, tokenkeyPair)
     return userInfoPromise
   }
-  
+
   async getAFieldOnAMember (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/${tokenInfo.field}`
     const getAFieldOnAMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAFieldOnAMemberPromise
   }
- 
+
   async getAMembersActions (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/actions`
     const getAMembersActionsPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersActionsPromise
   }
- 
+
   async getMembersCustomBoardBack (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardBackgrounds`
     const getMembersCustomBoardBackPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMembersCustomBoardBackPromise
   }
- 
+
   async getABoardBackOfAMember (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardBackgrounds/${tokenInfo.idBackground}`
     const getABoardBackOfAMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getABoardBackOfAMemberPromise
   }
-  
+
   async getAMembersBoardStars (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardStars`
     const getAMembersBoardStarsPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersBoardStarsPromise
   }
-   
+
   async getABoardStarOfMember (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardStars/${tokenInfo.idStar}`
     const getABoardStarOfMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getABoardStarOfMemberPromise
   }
-    
+
   async getBoardsThatMemberBelongsTo (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boards`
     const getBoardsThatMemberBelongsToPromise = await this.authorizationFn(url, tokenkeyPair)
     return getBoardsThatMemberBelongsToPromise
   }
-  
+
   async getBoardsTheMemberHasBeenInvitedTo (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardsInvited`
     const getBoardsTheMemberHasBeenInvitedToPromise = await this.authorizationFn(url, tokenkeyPair)
     return getBoardsTheMemberHasBeenInvitedToPromise
   }
-  
+
   async getCardsTheMemberIsOn (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/cards`
     const getCardsTheMemberIsOnPromise = await this.authorizationFn(url, tokenkeyPair)
     return getCardsTheMemberIsOnPromise
   }
-  
+
   async getAMembersCustomBoardBack (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customBoardBackgrounds`
     const getAMembersCustomBoardBackPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersCustomBoardBackPromise
   }
-  
+
   async getCustomBoardBackOfMember (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customBoardBackgrounds/${tokenInfo.idBackground}`
     const getCustomBoardBackOfMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getCustomBoardBackOfMemberPromise
   }
-  
+
   async getAMembersCustomEmojis (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customEmoji`
     const getAMembersCustomEmojisPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersCustomEmojisPromise
   }
-  
+
   async getAMembersCustomEmoji (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customEmoji/${tokenInfo.idEmoji}`
     const getAMembersCustomEmojiPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersCustomEmojiPromise
   }
-  
+
   async getMemberscustomStickers (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customStickers`
     const getMemberscustomStickersPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMemberscustomStickersPromise
   }
-  
+
   async getAMembersCustomSticker (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/customStickers/${tokenInfo.idSticker}`
     const getMemberscustomStickersPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMemberscustomStickersPromise
   }
-  
+
   async getMembersNotification (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/notifications`
     const getMembersNotificationPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMembersNotificationPromise
   }
-  
+
   async getMembersOrganization (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/organizations`
     const getMembersOrganizationPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMembersOrganizationPromise
   }
-  
+
   async getOrganizationAMemberHasBeenInvitedTo (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/organizationInvited`
     const getOrganizationAMemberHasBeenInvitedToPromise = await this.authorizationFn(url, tokenkeyPair)
     return getOrganizationAMemberHasBeenInvitedToPromise
   }
-  
+
   async getMembersSavedSearched (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/savedSearches`
     const getMembersSavedSearchedPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMembersSavedSearchedPromise
   }
-  
+
   async getASavedSearch (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/savedSearches/${tokenInfo.idSearch}`
     const getASavedSearchPromise = await this.authorizationFn(url, tokenkeyPair)
     return getASavedSearchPromise
   }
-  
+
   async getMembersTokens (tokenkeyPair) {
     const url = `${this.uri}/1/members/${tokenkeyPair.id}/tokens`
     const getMembersTokensPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMembersTokensPromise
   }
- 
+
   async getUserInfo (tokenkeyPair) {
     const url = `${this.uri}/1/members/me`
     const userInfoPromise = await this.authorizationFn(url, tokenkeyPair)
@@ -572,7 +572,7 @@ class Queries {
   }
 
   // Notifications
-  
+
   async getANotification (tokenInfo) {
     const url = `${this.uri}/1/notifications/${tokenInfo.id}`
     const getANotificationPromise = await this.authorizationFn(url, tokenInfo)
@@ -622,7 +622,7 @@ class Queries {
   }
 
   // Organizations
-  
+
   async getAnOrganization (tokenInfo) {
     const url = `${this.uri}/1/organizations/${tokenInfo.id}`
     const getAnOrganizationPromise = await this.authorizationFn(url, tokenInfo)
@@ -690,7 +690,7 @@ class Queries {
   }
 
   // Plugins
-  
+
   async getAPlugin (tokenInfo) {
     const url = `${this.uri}/1/plugins/${tokenInfo.id}`
     const getAPluginPromise = await this.authorizationFn(url, tokenInfo)
@@ -704,7 +704,7 @@ class Queries {
   }
 
   // Searching
-  
+
   async searchTrello () {
     const url = `${this.uri}/1/search`
     const searchTrelloPromise = await this.authorizationFn(url, tokenInfo)
@@ -718,19 +718,18 @@ class Queries {
   }
 
   // Webhooks
-  
-   async getAWebhook (tokenInfo) {
+
+  async getAWebhook (tokenInfo) {
     const url = `${this.uri}/1/webhooks/${tokenInfo.id}`
     const getAWebhookPromise = await this.authorizationFn(url, tokenInfo)
     return getAWebhookPromise
   }
 
-    async getAFieldOnAWebhook (tokenInfo) {
+  async getAFieldOnAWebhook (tokenInfo) {
     const url = `${this.uri}/1/webhooks/${tokenInfo.id}/${tokenInfo.field}`
     const getAFieldOnAWebhookPromise = await this.authorizationFn(url, tokenInfo)
     return getAFieldOnAWebhookPromise
   }
-
 }
 
 module.exports.Queries = Queries

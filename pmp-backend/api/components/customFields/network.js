@@ -11,7 +11,7 @@ require('../../../utils/auth/strategies/jwt')
 
 const idUserInfoById = async (req, res, next) => {
   try {
-    
+
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
   }
