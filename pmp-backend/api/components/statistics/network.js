@@ -11,8 +11,12 @@ require('../../../utils/auth/strategies/jwt')
 
 const getBoardsPercen = async (req, res, next) => {
   try {
-    const action = await controller.getBoardsPercen(req.user)
-    response.success(req, res, action, 200)
+    const action = await controller.getBoardsPercen(req.user, req.params)
+    const actionObj = {}
+    for (const act in action) {
+      actionObj[act] = action[act]
+    }
+    response.success(req, res, actionObj, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
   }
@@ -55,10 +59,10 @@ const getTotalCheckList = async (req, res, next) => {
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/', passport.authenticate('jwt', { session: false }), getBoardsPercen)
-router.get('/', passport.authenticate('jwt', { session: false }), getMainCardPercen)
-router.get('/', passport.authenticate('jwt', { session: false }), getCardsInCardsPercen)
-router.get('/', passport.authenticate('jwt', { session: false }), getCheckListPercen)
-router.get('/', passport.authenticate('jwt', { session: false }), getTotalCheckList)
+router.get('/1/:idBoard', passport.authenticate('jwt', { session: false }), getBoardsPercen)
+router.get('/2/', passport.authenticate('jwt', { session: false }), getMainCardPercen)
+router.get('/3/', passport.authenticate('jwt', { session: false }), getCardsInCardsPercen)
+router.get('/4/', passport.authenticate('jwt', { session: false }), getCheckListPercen)
+router.get('/5/', passport.authenticate('jwt', { session: false }), getTotalCheckList)
 
 module.exports = router
