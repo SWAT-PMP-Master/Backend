@@ -4,7 +4,6 @@ const trelloAuth = require('../../../utils/auth/trello/index')
 const utils = require('../../../utils/utils')
 
 module.exports = (store) => {
-
   const query = utils().queryFn()
 
   const getListAvailableEmoji = async (body) => {

@@ -6,10 +6,7 @@ const utils = require('../../../utils/utils')
 // const boom = require('@hapi/boom')
 // const jwt = require('jsonwebtoken')
 
-const query = utils().queryFn()
-
 module.exports = (store) => {
-
   const query = utils().queryFn()
 
   const boardsInfo = async (body) => {

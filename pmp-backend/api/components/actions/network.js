@@ -108,7 +108,6 @@ const listActionSummaryOfReactions = async (req, res, next) => {
   }
 }
 
-
 // passport.authenticate('jwt', { session: false }),
 router.get('/:idAction', passport.authenticate('jwt', { session: false }), getAnAction)
 router.get('/specifiedAction/:idAction&:field', passport.authenticate('jwt', { session: false }), getASpecificFieldOnAnAction)

@@ -81,7 +81,6 @@ const getANotificationAssociatedOrganization = async (req, res, next) => {
   }
 }
 
-
 // passport.authenticate('jwt', { session: false }),
 router.get('/:id', passport.authenticate('jwt', { session: false }), getANotification)
 router.get('/notifications/:id&:field', passport.authenticate('jwt', { session: false }), getAFieldOfANotification)

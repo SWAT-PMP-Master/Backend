@@ -18,15 +18,6 @@ const getACard = async (req, res, next) => {
   }
 }
 
-const getACard = async (req, res, next) => {
-  try {
-    const action = await controller.getACard(req.user, req.params)
-    response.success(req, res, action, 200)
-  } catch (err) {
-    response.error(req, res, err.data, err.statusCode)
-  }
-}
-
 const getAFieldOnACard = async (req, res, next) => {
   try {
     const action = await controller.getAFieldOnACard(req.user, req.params)

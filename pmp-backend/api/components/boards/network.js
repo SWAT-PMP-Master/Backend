@@ -144,6 +144,15 @@ const getPowerupsOnABoard = async (req, res, next) => {
   }
 }
 
+const getACardOnABoard = async (req, res, next) => {
+  try {
+    const board = await controller.getACardOnABoard(req.user, req.params)
+    response.success(req, res, board, 200)
+  } catch (err) {
+    response.error(req, res, err.data, err.statusCode)
+  }
+}
+
 // passport.authenticate('jwt', { session: false }),
 router.get('/boardsMemberShip/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
 router.get('/:board', passport.authenticate('jwt', { session: false }), boards)

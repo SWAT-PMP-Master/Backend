@@ -4,14 +4,13 @@ const trelloAuth = require('../../../utils/auth/trello/index')
 const utils = require('../../../utils/utils')
 
 module.exports = (store) => {
-
   const query = utils().queryFn()
 
   const getAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -20,10 +19,10 @@ module.exports = (store) => {
 
   const getASpecificFieldOnAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
       tokenKeyPair.field = params.field
-      const action = JSON.parse(await trelloAuth(query).getASpecificFieldOnAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getASpecificFieldOnAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -32,9 +31,9 @@ module.exports = (store) => {
 
   const getTheBoardForAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheBoardForAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheBoardForAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -43,9 +42,9 @@ module.exports = (store) => {
 
   const getTheCardForAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheCardForAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheCardForAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -54,9 +53,9 @@ module.exports = (store) => {
 
   const getTheListForAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheListForAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheListForAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -65,9 +64,9 @@ module.exports = (store) => {
 
   const getTheMemberOfAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheMemberOfAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheMemberOfAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -76,9 +75,9 @@ module.exports = (store) => {
 
   const getTheMemberCreatorOfAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheMemberCreatorOfAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheMemberCreatorOfAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -87,9 +86,9 @@ module.exports = (store) => {
 
   const getTheOrganizationOfAnAction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getTheOrganizationOfAnAction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getTheOrganizationOfAnAction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -98,9 +97,9 @@ module.exports = (store) => {
 
   const getActionsReactions = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getActionsReactions(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getActionsReactions(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -109,9 +108,9 @@ module.exports = (store) => {
 
   const getActionReaction = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).getActionReaction(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).getActionReaction(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)
@@ -120,9 +119,9 @@ module.exports = (store) => {
 
   const listActionSummaryOfReactions = async (body, params) => {
     try {
-      let tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
       tokenKeyPair.id = params.idAction
-      const action = JSON.parse(await trelloAuth(query).listActionSummaryOfReactions(tokenKeyPair)) 
+      const action = JSON.parse(await trelloAuth(query).listActionSummaryOfReactions(tokenKeyPair))
       return action
     } catch (e) {
       throw new Error(e)

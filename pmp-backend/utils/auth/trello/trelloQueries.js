@@ -32,7 +32,7 @@ class Queries {
   }
 
   async getASpecificFieldOnAnAction (tokenInfo) {
-    const url = `${this.uri}/1/actions/${tokenInfo.id}/${tokeninfo.field}`
+    const url = `${this.uri}/1/actions/${tokenInfo.id}/${tokenInfo.field}`
     const getASpecificFieldOnAnActionPromise = await this.authorizationFn(url, tokenInfo)
     return getASpecificFieldOnAnActionPromise
   }
@@ -127,12 +127,6 @@ class Queries {
     const url = `${this.uri}/1/boards/${tokenInfo.boardId}/boardStars`
     const getBoardsStartsOnABoardPromise = await this.authorizationFn(url, tokenInfo)
     return getBoardsStartsOnABoardPromise
-  }
-
-  async getChecklistsOnABoard (tokenInfo) {
-    const url = `${this.uri}/1/boards/${tokenInfo.id}/checklists`
-    const getChecklistsOnABoardPromise = await this.authorizationFn(url, tokenInfo)
-    return getChecklistsOnABoardPromise
   }
 
   async getCardsOnABoard (tokenInfo) {
@@ -347,7 +341,7 @@ class Queries {
 
   // Emojis
 
-  async getListAvailableEmoji () {
+  async getListAvailableEmoji (tokenInfo) {
     const url = `${this.uri}/1/emoji/`
     const getListAvailableEmojiPromise = await this.authorizationFn(url, tokenInfo)
     return getListAvailableEmojiPromise
@@ -422,7 +416,7 @@ class Queries {
   }
 
   async getAFieldOnAMember (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/${tokenInfo.field}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/${tokenkeyPair.field}`
     const getAFieldOnAMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAFieldOnAMemberPromise
   }
@@ -440,7 +434,7 @@ class Queries {
   }
 
   async getABoardBackOfAMember (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardBackgrounds/${tokenInfo.idBackground}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardBackgrounds/${tokenkeyPair.idBackground}`
     const getABoardBackOfAMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getABoardBackOfAMemberPromise
   }
@@ -452,7 +446,7 @@ class Queries {
   }
 
   async getABoardStarOfMember (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardStars/${tokenInfo.idStar}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/boardStars/${tokenkeyPair.idStar}`
     const getABoardStarOfMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getABoardStarOfMemberPromise
   }
@@ -482,7 +476,7 @@ class Queries {
   }
 
   async getCustomBoardBackOfMember (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customBoardBackgrounds/${tokenInfo.idBackground}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customBoardBackgrounds/${tokenkeyPair.idBackground}`
     const getCustomBoardBackOfMemberPromise = await this.authorizationFn(url, tokenkeyPair)
     return getCustomBoardBackOfMemberPromise
   }
@@ -494,7 +488,7 @@ class Queries {
   }
 
   async getAMembersCustomEmoji (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customEmoji/${tokenInfo.idEmoji}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customEmoji/${tokenkeyPair.idEmoji}`
     const getAMembersCustomEmojiPromise = await this.authorizationFn(url, tokenkeyPair)
     return getAMembersCustomEmojiPromise
   }
@@ -506,7 +500,7 @@ class Queries {
   }
 
   async getAMembersCustomSticker (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customStickers/${tokenInfo.idSticker}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/customStickers/${tokenkeyPair.idSticker}`
     const getMemberscustomStickersPromise = await this.authorizationFn(url, tokenkeyPair)
     return getMemberscustomStickersPromise
   }
@@ -536,7 +530,7 @@ class Queries {
   }
 
   async getASavedSearch (tokenkeyPair) {
-    const url = `${this.uri}/1/members/${tokenkeyPair.id}/savedSearches/${tokenInfo.idSearch}`
+    const url = `${this.uri}/1/members/${tokenkeyPair.id}/savedSearches/${tokenkeyPair.idSearch}`
     const getASavedSearchPromise = await this.authorizationFn(url, tokenkeyPair)
     return getASavedSearchPromise
   }
@@ -693,13 +687,13 @@ class Queries {
 
   // Searching
 
-  async searchTrello () {
+  async searchTrello (tokenInfo) {
     const url = `${this.uri}/1/search`
     const searchTrelloPromise = await this.authorizationFn(url, tokenInfo)
     return searchTrelloPromise
   }
 
-  async searchForMembers () {
+  async searchForMembers (tokenInfo) {
     const url = `${this.uri}/1/search/members`
     const searchForMembersPromise = await this.authorizationFn(url, tokenInfo)
     return searchForMembersPromise
