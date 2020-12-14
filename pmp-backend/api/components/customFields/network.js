@@ -9,15 +9,36 @@ const router = express.Router()
 
 require('../../../utils/auth/strategies/jwt')
 
-const idUserInfoById = async (req, res, next) => {
+const getACustomField = async (req, res, next) => {
   try {
+    const action = await controller.getACustomField(req.user, req.params)
+    response.success(req, res, action, 200)
+  } catch (err) {
+    response.error(req, res, err.data, err.statusCode)
+  }
+}
 
+const getOptionsOfCustomFieldDropDown = async (req, res, next) => {
+  try {
+    const action = await controller.getOptionsOfCustomFieldDropDown(req.user, req.params)
+    response.success(req, res, action, 200)
+  } catch (err) {
+    response.error(req, res, err.data, err.statusCode)
+  }
+}
+
+const getOptionOfCustomFieldDropdown = async (req, res, next) => {
+  try {
+    const action = await controller.getOptionOfCustomFieldDropdown(req.user, req.params)
+    response.success(req, res, action, 200)
   } catch (err) {
     response.error(req, res, err.data, err.statusCode)
   }
 }
 
 // passport.authenticate('jwt', { session: false }),
-router.get('/', passport.authenticate('jwt', { session: false }), idUserInfoById)
+router.get('/:id', passport.authenticate('jwt', { session: false }), getACustomField)
+router.get('/customfields/:id', passport.authenticate('jwt', { session: false }), getOptionsOfCustomFieldDropDown)
+router.get('/dropDown/:id', passport.authenticate('jwt', { session: false }), getOptionOfCustomFieldDropdown)
 
 module.exports = router
