@@ -10,35 +10,26 @@ module.exports = (store) => {
   const query = utils().queryFn()
 
   const boardsInfo = async (body) => {
-    try {
-      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
-      const data = JSON.parse(await trelloAuth(query).getUserTrelloBoards(tokenKeyPair))
-      return data
-    } catch (err) {
-      throw new Error(err)
-    }
+    const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+    const data = JSON.parse(await trelloAuth(query).getUserTrelloBoards(tokenKeyPair))
+    return data
   }
 
   const boardsList = async (body) => {
-    try {
-      const boardsTotal = body.data
-      let elements = []
-      for (let i = 0; i < boardsTotal.length; i++) {
-        const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
-
-        tokenKeyPair.boardId = boardsTotal[i]
-        const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
-        for (let j = 0; j < data.length; j++) {
-          const tokenKeyPairCard = utils().tokenKeyPairCardFn(body.token.trelloSecretUser, data[j].id)
-          const dataCard = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPairCard))
-          data[j].list = dataCard
-        }
-        elements = elements.concat([data])
+    const boardsTotal = body.data
+    let elements = []
+    for (let i = 0; i < boardsTotal.length; i++) {
+      const tokenKeyPair = utils().tokenKeyPairFn(body.token.trelloSecretUser)
+      tokenKeyPair.boardId = boardsTotal[i]
+      const data = JSON.parse(await trelloAuth(query).getBoardLists(tokenKeyPair))
+      for (let j = 0; j < data.length; j++) {
+        const tokenKeyPairCard = utils().tokenKeyPairCardFn(body.token.trelloSecretUser, data[j].id)
+        const dataCard = JSON.parse(await trelloAuth(query).getCardsOnList(tokenKeyPairCard))
+        data[j].list = dataCard
       }
-      return elements
-    } catch (err) {
-      console.error(err)
+      elements = elements.concat([data])
     }
+    return elements
   }
 
   const cardList = async (body, idCard) => {
