@@ -47,7 +47,7 @@ const boardsAction = async (req, res, next) => {
 
 // passport.authenticate('jwt', { session: false }),
 router.get('/boardsMemberShip/:idBoard', passport.authenticate('jwt', { session: false }), boardsMember)
-router.get('/boards/:board', passport.authenticate('jwt', { session: false }), boards)
+router.get('/:board', passport.authenticate('jwt', { session: false }), boards)
 router.get('/boardsAndField/:board&:field', passport.authenticate('jwt', { session: false }), boardsField)
 router.get('/boardsAction/:board', passport.authenticate('jwt', { session: false }), boardsAction)
 
