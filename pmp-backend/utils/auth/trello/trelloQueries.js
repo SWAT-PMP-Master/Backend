@@ -373,12 +373,6 @@ class Queries {
     return getEnterpriseAdminMembersPromise
   }
 
-  async getEnterpriseAdminMembers (tokenInfo) {
-    const url = `${this.uri}/1/enterprise/${tokenInfo.id}/admins`
-    const getEnterpriseAdminMembersPromise = await this.authorizationFn(url, tokenInfo)
-    return getEnterpriseAdminMembersPromise
-  }
-
   async getSignupForEnterprise (tokenInfo) {
     const url = `${this.uri}/1/enterprise/${tokenInfo.id}/signupUrl`
     const getSignupForEnterprisePromise = await this.authorizationFn(url, tokenInfo)
