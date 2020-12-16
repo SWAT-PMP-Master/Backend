@@ -36,36 +36,18 @@ module.exports = (store) => {
       names = names.concat(tempNames)
     })
     elements.BoardsNames = names
-    // let single = []
+    let single = []
     elements.BoardsNames.forEach(el => {
-      /* const valor = {
-        name: 'Name',
+      const valor = {
+        name: 'name',
         value: 0
-      } */
-      if (el.name === 'Done') {
-        const totalProject = el.cards / elements.TotalCards
-        /* valor.name = el.name
-        valor.value = totalProject.tofixed(2) */
-        elements.TotalProject = `${totalProject.toFixed(2) * 100}%`
-      } else if (el.name === 'Backlog') {
-        const backlogProject = el.cards / elements.TotalCards
-        /* valor.name = el.name
-        valor.value = totalProject.tofixed(2) */
-        elements.BacklogProject = `${backlogProject.toFixed(2) * 100}%`
-      } else if (el.name === 'To Do') {
-        const toDoProject = el.cards / elements.TotalCards
-        /* valor.name = el.name
-        valor.value = totalProject.tofixed(2) */
-        elements.ToDoProject = `${toDoProject.toFixed(2) * 100}%`
-      } else if (el.name === 'Doing') {
-        const doingProject = el.cards / elements.TotalCards
-        /* valor.name = el.name
-        valor.value = totalProject.tofixed(2) */
-        elements.TotalDoing = `${doingProject.toFixed(2) * 100}%`
       }
-      // single = single.concat(valor)
+      const totalProject = (el.cards / elements.TotalCards) * 100
+      valor.name = el.name
+      valor.value = totalProject
+      single = single.concat(valor)
     })
-
+    elements.single = single
     return elements
   }
 
