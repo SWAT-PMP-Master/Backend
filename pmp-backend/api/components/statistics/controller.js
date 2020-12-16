@@ -36,7 +36,7 @@ module.exports = (store) => {
       names = names.concat(tempNames)
     })
     elements.BoardsNames = names
-    let single = []
+    // let single = []
     elements.BoardsNames.forEach(el => {
       /* const valor = {
         name: 'Name',
@@ -63,7 +63,7 @@ module.exports = (store) => {
         valor.value = totalProject.tofixed(2) */
         elements.TotalDoing = `${doingProject.toFixed(2) * 100}%`
       }
-      single = single.concat(valor)
+      // single = single.concat(valor)
     })
 
     return elements
